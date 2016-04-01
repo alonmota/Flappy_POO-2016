@@ -1,1 +1,4 @@
 `Game 2D - Endless Runner - Parallel`  
+`Abstrato:`   
+`Advindo de uma realidade futurística caótica, o personagem viaja por diferentes períodos da história explorando desafios árduos, como combater inimigos, passando por barreiras, plataformas e buracos, para por fim tentar alcançar o objetivo de entender como o mundo chegou a esse estado e talvez achar uma possível solução (talvez coletando artefatos ou derrotando inimigos marcantes).`  
+`(Provável protótipo) Como fase inicial, mostra-se o protagonista em sua conturbada época se esforçando para sobreviver e coletar o dispositivo de viagem no tempo.`  
