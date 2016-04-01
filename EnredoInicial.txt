@@ -1,4 +1,12 @@
 `Game 2D - Endless Runner - Parallel`  
-`Abstrato:`   
+`Abstrato:`
+
+`1:` 
+
+`Advindo de uma realidade futurística, um colecionador ambicioso se depara com uma máquina de distorção do tempo-espaço e decide transitar entre as diversas épocas importantes de nossa história, com o intuito de coletar novos artefatos para sua coleção.`
+`(Provável protótipo) Como fase inicial, há o protagonista em sua época simplesmente explorando até que, no final da fase, encontra o dispositivo de distorção do tempo-espaço.`
+
+`2:`
+
 `Advindo de uma realidade futurística caótica, o personagem viaja por diferentes períodos da história explorando desafios árduos, como combater inimigos, passando por barreiras, plataformas e buracos, para por fim tentar alcançar o objetivo de entender como o mundo chegou a esse estado e talvez achar uma possível solução (talvez coletando artefatos ou derrotando inimigos marcantes).`  
 `(Provável protótipo) Como fase inicial, mostra-se o protagonista em sua conturbada época se esforçando para sobreviver e coletar o dispositivo de viagem no tempo.`  
