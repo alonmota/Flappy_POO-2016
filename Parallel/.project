@@ -3,6 +3,7 @@
 	<name>Parallel</name>
 	<comment></comment>
 	<projects>
+		<project>AndEngine</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
