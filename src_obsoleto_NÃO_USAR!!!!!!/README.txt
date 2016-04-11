@@ -1,1 +1,0 @@
-Implementação de teste no android studio. Versao 4.0, com sdk versao 23, e build tolls 1.5.0
