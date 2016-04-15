@@ -7,5 +7,6 @@
     <string name="Play">Play</string>
     <string name="Settings">Settings</string>
     <string name="Quit">Quit</string>
+    <string name="MENU">MENU</string>
 
 </resources>

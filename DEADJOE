@@ -1,0 +1,108 @@
+
+*** Modified files in JOE when it aborted on Fri Apr 15 20:25:31 2016
+*** JOE was aborted because the terminal closed
+
+*** File '/home/eduardo/Parallel_POO-2016/.git/COMMIT_EDITMSG'
+q
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   .metadata/.log
+#	modified:   .metadata/.plugins/org.eclipse.cdt.core/.log
+#	deleted:    .metadata/.plugins/org.eclipse.core.resources/.history/1/0066010d190300161dfbb66123889513
+#	deleted:    .metadata/.plugins/org.eclipse.core.resources/.history/13/0042951f190300161dfbb66123889513
+#	deleted:    .metadata/.plugins/org.eclipse.core.resources/.history/26/008ddcd7190300161dfbb66123889513
+#	deleted:    .metadata/.plugins/org.eclipse.core.resources/.history/27/70c9d3da180300161dfbb66123889513
+#	deleted:    .metadata/.plugins/org.eclipse.core.resources/.history/58/d0f56200190300161dfbb66123889513
+#	deleted:    .metadata/.plugins/org.eclipse.core.resources/.history/5b/1087cc15190300161dfbb66123889513
+#	deleted:    .metadata/.plugins/org.eclipse.core.resources/.history/63/b0bcef99190300161dfbb66123889513
+#	deleted:    .metadata/.plugins/org.eclipse.core.resources/.history/87/b0833209190300161dfbb66123889513
+#	deleted:    .metadata/.plugins/org.eclipse.core.resources/.history/91/f0e02c251a0300161dfbb66123889513
+#	deleted:    .metadata/.plugins/org.eclipse.core.resources/.history/b2/d05d79b4180300161dfbb66123889513
+#	deleted:    .metadata/.plugins/org.eclipse.core.resources/.history/c5/c0a928a6180300161dfbb66123889513
+#	deleted:    .metadata/.plugins/org.eclipse.core.resources/.history/e1/c052b204190300161dfbb66123889513
+#	deleted:    .metadata/.plugins/org.eclipse.core.resources/.history/e9/000b9010190300161dfbb66123889513
+#	deleted:    .metadata/.plugins/org.eclipse.core.resources/.history/f4/e0a585fa180300161dfbb66123889513
+#	modified:   .metadata/.plugins/org.eclipse.core.resources/.projects/.org.eclipse.jdt.core.external.folders/.markers.snap
+#	modified:   .metadata/.plugins/org.eclipse.core.resources/.projects/.org.eclipse.jdt.core.external.folders/.syncinfo.snap
+#	modified:   .metadata/.plugins/org.eclipse.core.resources/.projects/AndEngine/.markers.snap
+#	modified:   .metadata/.plugins/org.eclipse.core.resources/.projects/AndEngine/.syncinfo.snap
+#	modified:   .metadata/.plugins/org.eclipse.core.resources/.projects/Parallel/.indexes/a0/d6/history.index
+#	modified:   .metadata/.plugins/org.eclipse.core.resources/.projects/Parallel/.indexes/a0/d6/properties.index
+#	modified:   .metadata/.plugins/org.eclipse.core.resources/.projects/Parallel/.indexes/a0/de/history.index
+#	deleted:    .metadata/.plugins/org.eclipse.core.resources/.projects/Parallel/.indexes/af/history.index
+#	deleted:    .metadata/.plugins/org.eclipse.core.resources/.projects/Parallel/.indexes/e4/e4/50/dd/7/history.index
+#	modified:   .metadata/.plugins/org.eclipse.core.resources/.projects/Parallel/.markers.snap
+#	modified:   .metadata/.plugins/org.eclipse.core.resources/.projects/Parallel/.syncinfo.snap
+#	modified:   .metadata/.plugins/org.eclipse.core.resources/.root/.indexes/properties.index
+#	modified:   .metadata/.plugins/org.eclipse.core.resources/.root/.markers.snap
+#	modified:   .metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources
+#	modified:   .metadata/.plugins/org.eclipse.core.resources/.snap
+#	modified:   .metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.launching.prefs
+#	modified:   .metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.ui.prefs
+#	modified:   .metadata/.plugins/org.eclipse.jdt.core/1303238418.index
+#	modified:   .metadata/.plugins/org.eclipse.jdt.core/1886077704.index
+#	modified:   .metadata/.plugins/org.eclipse.jdt.core/externalLibsTimeStamps
+#	modified:   .metadata/.plugins/org.eclipse.jdt.core/savedIndexNames.txt
+#	modified:   .metadata/.plugins/org.eclipse.jdt.core/variablesAndContainers.dat
+#	modified:   .metadata/.plugins/org.eclipse.jdt.ui/jdt-images/0.png
+#	deleted:    .metadata/.plugins/org.eclipse.jdt.ui/jdt-images/1.png
+#	deleted:    .metadata/.plugins/org.eclipse.jdt.ui/jdt-images/2.png
+#	deleted:    .metadata/.plugins/org.eclipse.jdt.ui/jdt-images/3.png
+#	deleted:    .metadata/.plugins/org.eclipse.jdt.ui/jdt-images/4.png
+#	deleted:    .metadata/.plugins/org.eclipse.jdt.ui/jdt-images/5.png
+#	deleted:    .metadata/.plugins/org.eclipse.jdt.ui/jdt-images/6.png
+#	deleted:    .metadata/.plugins/org.eclipse.jdt.ui/jdt-images/7.png
+#	modified:   .metadata/.plugins/org.eclipse.ltk.core.refactoring/.refactorings/Parallel/2016/4/16/refactorings.history
+#	modified:   .metadata/.plugins/org.eclipse.ltk.core.refactoring/.refactorings/Parallel/2016/4/16/refactorings.index
+#	modified:   .metadata/.plugins/org.eclipse.ui.workbench/workingsets.xml
+#	modified:   Parallel/.classpath
+#	modified:   Parallel/bin/Parallel.apk
+#	modified:   Parallel/bin/dexedLibs/andengine-02a0fef9fc9c6846bc4bbb6bbd126f0f.jar
+#	modified:   Parallel/bin/resources.ap_
+#	modified:   Parallel/project.properties
+#	modified:   Parallel/res/layout/activity_main.xml
+#	modified:   Parallel/res/values/strings.xml
+#
+# Untracked files:
+#	.metadata/.plugins/com.android.ide.eclipse.adt/palette-preview-r16b-19-apptheme-nexusone/
+#	.metadata/.plugins/org.eclipse.core.resources/.history/17/
+#	.metadata/.plugins/org.eclipse.core.resources/.history/3e/
+#	.metadata/.plugins/org.eclipse.core.resources/.history/4c/
+#	.metadata/.plugins/org.eclipse.core.resources/.history/7/
+#	.metadata/.plugins/org.eclipse.core.resources/.history/7d/
+#	.metadata/.plugins/org.eclipse.core.resources/.history/99/
+#	.metadata/.plugins/org.eclipse.core.resources/.history/a5/
+#	.metadata/.plugins/org.eclipse.core.resources/.history/b1/
+#	.metadata/.plugins/org.eclipse.core.resources/.history/c5/
+#	.metadata/.plugins/org.eclipse.core.resources/.projects/AndEngine/.markers
+#	.metadata/.plugins/org.eclipse.core.resources/.projects/Parallel/.markers
+#	.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/history.version
+#	.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/properties.version
+#	.metadata/.plugins/org.eclipse.core.resources/.root/1.tree
+#	.metadata/.plugins/org.eclipse.core.runtime/.settings/com.android.ide.eclipse.adt.prefs
+#	.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.cdt.ui.prefs
+#	.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.m2e.discovery.prefs
+#	.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.ide.prefs
+#	.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.workbench.prefs
+#	.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.wst.sse.core.prefs
+#	.metadata/.plugins/org.eclipse.jdt.core/indexNamesMap.txt
+#	.metadata/.plugins/org.eclipse.jdt.core/invalidArchivesCache
+#	.metadata/.plugins/org.eclipse.jdt.core/nonChainingJarsCache
+#	.metadata/.plugins/org.eclipse.jdt.ui/OpenTypeHistory.xml
+#	.metadata/.plugins/org.eclipse.jdt.ui/QualifiedTypeNameHistory.xml
+#	.metadata/.plugins/org.eclipse.jdt.ui/dialog_settings.xml
+#	.metadata/.plugins/org.eclipse.ltk.core.refactoring/.refactorings/.workspace/
+#	.metadata/.plugins/org.eclipse.ltk.ui.refactoring/
+#	.metadata/.plugins/org.eclipse.pde.core/
+#	.metadata/.plugins/org.eclipse.ui.ide/
+#	.metadata/.plugins/org.eclipse.ui.workbench/dialog_settings.xml
+#	.metadata/.plugins/org.eclipse.ui.workbench/workbench.xml
+#	.metadata/.plugins/org.eclipse.wst.xml.ui/
+#	Parallel/assets/menu/Play_Button.png
+#	Parallel/assets/menu/Quit_Button.png
+#	Parallel/assets/menu/Settings_Button.png
+#
