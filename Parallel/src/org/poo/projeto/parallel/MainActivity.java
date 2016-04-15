@@ -48,8 +48,8 @@ public class MainActivity extends SimpleBaseGameActivity {
 	private Scene scene;
 	private ITextureRegion mBackgroundTextureRegion;
 	
-	// Os 3 métodos logo abaixo foram definidos
-	// automaticamente na geração de um projeto
+	// Os 3 mï¿½todos logo abaixo foram definidos
+	// automaticamente na geraï¿½ï¿½o de um projeto
 	// Android aqui no Eclipse.
 	
 	@Override
@@ -70,11 +70,21 @@ public class MainActivity extends SimpleBaseGameActivity {
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
+		switch(R.id.action_settings)
+		{
+			case R.id.PLAY:
+				
+				break;
+			case R.id.SETTINGS:
+			
+				break;
+			case R.id.QUIT:
+				
+				break;	
+			default:
+				super.onOptionsItemSelected(item);
 		}
-		return super.onOptionsItemSelected(item);
+		return true;
 	}
 	
 	// AndEngine for Android Game Development Cookbook
@@ -125,7 +135,7 @@ public class MainActivity extends SimpleBaseGameActivity {
 //		
 //	}
 
-	// Seriam então os 3 métodos acima + o que vem logo abaixo...
+	// Seriam entï¿½o os 3 mï¿½todos acima + o que vem logo abaixo...
 	
 	// AndEngine for Android Game Development Cookbook
 	
