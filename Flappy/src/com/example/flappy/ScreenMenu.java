@@ -1,5 +1,9 @@
 package com.example.flappy;
 
+import com.example.flappy.R;
+import com.example.flappy.R.id;
+import com.example.flappy.R.layout;
+
 import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
 import android.content.Intent;
@@ -29,8 +33,8 @@ public class ScreenMenu extends Activity {
 			@Override
 			public void onClick(View v) {
 				
-				Intent fase1scr = new Intent(getApplicationContext(), FaseOneScreen.class);
-				startActivity(fase1scr);
+			//	Intent fase1scr = new Intent(getApplicationContext(), FaseOneScreen.class);
+			//	startActivity(fase1scr);
 				
 			};
 		});

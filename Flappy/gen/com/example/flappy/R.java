@@ -2064,6 +2064,7 @@ containing a value of this type.
         public static final int checkbox=0x7f090039;
         public static final int chronometer=0x7f090058;
         public static final int collapseActionView=0x7f09001a;
+        public static final int container=0x7f090050;
         public static final int contentPanel=0x7f090031;
         public static final int custom=0x7f090037;
         public static final int customPanel=0x7f090036;
@@ -2075,7 +2076,6 @@ containing a value of this type.
         public static final int end_padder=0x7f09005d;
         public static final int expand_activities_button=0x7f090025;
         public static final int expanded_menu=0x7f090038;
-        public static final int fase_1_backgorund=0x7f090050;
         public static final int home=0x7f090000;
         public static final int homeAsUp=0x7f09000e;
         public static final int icon=0x7f090029;

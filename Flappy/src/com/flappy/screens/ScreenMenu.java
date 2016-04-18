@@ -1,6 +1,8 @@
 package com.flappy.screens;
 
 import com.example.flappy.R;
+import com.example.flappy.R.id;
+import com.example.flappy.R.layout;
 
 import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
@@ -17,26 +19,24 @@ public class ScreenMenu extends Activity {
 
 	private Button playButon;
 	private Button quitButton;
-	private Intent fase1scr;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.screen_menu);
-       
+        
         playButon = (Button) findViewById(R.id.PLAY);
         quitButton = (Button) findViewById(R.id.QUIT);
-        
+          
     	playButon.setOnClickListener( new View.OnClickListener() {
-    		 
+			
 			@Override
 			public void onClick(View v) {
 				
-				//  lfase1scr = new Intent(getApplicationContext(), FaseOneScreen.class);
-				//startActivity(fase1scr);
+				Intent fase1scr = new Intent(getApplicationContext(), FaseOneScreen.class);
+				startActivity(fase1scr);
 				
 			};
-			
 		});
     	
     	quitButton.setOnClickListener( new View.OnClickListener() {
@@ -52,15 +52,11 @@ public class ScreenMenu extends Activity {
 				startActivity(intent);
 				
 			}
-			
 		});
-    	
+    
     }
     
-    protected void onPause() {
-        super.onPause();
-     
-    }
+
     /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
