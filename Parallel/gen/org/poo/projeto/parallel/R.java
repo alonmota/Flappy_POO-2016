@@ -31,7 +31,8 @@ public final class R {
         public static final int PLAY=0x7f0a0001;
         public static final int QUIT=0x7f0a0000;
         public static final int SETTINGS=0x7f0a0002;
-        public static final int action_settings=0x7f0a0003;
+        public static final int action_settings=0x7f0a0004;
+        public static final int viewSwitcher1=0x7f0a0003;
     }
     public static final class layout {
         public static final int activity_main=0x7f040000;
@@ -44,6 +45,7 @@ public final class R {
         public static final int ic_launcher=0x7f030000;
     }
     public static final class string {
+        public static final int MENU=0x7f070006;
         public static final int Play=0x7f070003;
         public static final int Quit=0x7f070005;
         public static final int Settings=0x7f070004;

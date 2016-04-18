@@ -20,6 +20,7 @@ import org.andengine.entity.scene.Scene;
 import org.andengine.entity.scene.background.IBackground;
 import org.andengine.entity.scene.background.modifier.ColorBackgroundModifier;
 import org.andengine.opengl.texture.ITexture;
+import org.andengine.opengl.texture.atlas.bitmap.BuildableBitmapTextureAtlas;
 import org.andengine.opengl.texture.bitmap.BitmapTexture;
 import org.andengine.ui.IGameInterface.OnCreateResourcesCallback;
 import org.andengine.ui.activity.BaseGameActivity;
@@ -33,9 +34,14 @@ import org.andengine.opengl.texture.region.TextureRegionFactory;
 import org.andengine.entity.sprite.Sprite;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends SimpleBaseGameActivity {
 
@@ -46,18 +52,49 @@ public class MainActivity extends SimpleBaseGameActivity {
 	
 	// Scene Fields
 	private Scene scene;
-	private ITextureRegion mBackgroundTextureRegion;
+	
+	/* Esses valores podem ser private.. */
+	public ITextureRegion mBackgroundTextureRegion;
+	public ITextureRegion play_region;
+	public ITextureRegion options_region;
+	
+	private BuildableBitmapTextureAtlas menuTextureAtlas;
 	
 	// Os 3 m�todos logo abaixo foram definidos
 	// automaticamente na gera��o de um projeto
 	// Android aqui no Eclipse.
+
+/*	public void onClick(View v)
+	{
+		Context contexto = getApplicationContext();
+        int duracao = Toast.LENGTH_SHORT;		
+
+		switch(v.getId())
+		{
+			case R.id.PLAY:
+				Toast toast = Toast.makeText(contexto, "Play", duracao);
+		        toast.show();
+				break;
+			case R.id.SETTINGS:
+				Toast toast2 = Toast.makeText(contexto, "Settings", duracao);
+		        toast2.show();
+				break;
+			case R.id.QUIT:
+				Toast toast3 = Toast.makeText(contexto, "Quit", duracao);
+		        toast3.show();
+				break;
+			default:
+				break;
+		}
+	}*/
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
 	}
-
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -70,16 +107,22 @@ public class MainActivity extends SimpleBaseGameActivity {
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
-		switch(R.id.action_settings)
+		Context contexto = getApplicationContext();
+        int duracao = Toast.LENGTH_LONG;
+
+		switch(item.getItemId())
 		{
 			case R.id.PLAY:
-				
+				Toast toast = Toast.makeText(contexto, "Play",duracao);
+		        toast.show();
 				break;
 			case R.id.SETTINGS:
-			
+				Toast toast2 = Toast.makeText(contexto, "Settings",duracao);
+		        toast2.show();
 				break;
 			case R.id.QUIT:
-				
+				Toast toast3 = Toast.makeText(contexto, "Quit",duracao);
+		        toast3.show();
 				break;	
 			default:
 				super.onOptionsItemSelected(item);
