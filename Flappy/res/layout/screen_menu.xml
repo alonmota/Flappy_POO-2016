@@ -1,0 +1,29 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.flappy.ScreenMenu" >
+
+    <Button
+        android:id="@+id/PLAY"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/play_up"
+        android:enabled="true" />
+
+    <Button
+        android:id="@+id/QUIT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/PLAY"
+        android:layout_below="@+id/PLAY"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/quit_up"
+        android:enabled="true" />
+   	
+</RelativeLayout>
