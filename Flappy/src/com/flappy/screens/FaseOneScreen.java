@@ -13,18 +13,18 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
 
-public class FaseOneScreen extends SurfaceView implements Runnable { /* Essa é a classe de view para a fase 1; */
+/*public class FaseOneScreen extends Activity { /* Essa é a classe de view para a fase 1; */
 
-	private boolean running = true;
+	//private boolean running = true;
 	
-	public FaseOneScreen(Context context) {
+/*	public FaseOneScreen(Context context) {
 		super(context);
 	}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout-finger.fase1);
+ /*       setContentView(R.layout-finger.fase1);
         
         playButon = (Button) findViewById(R.id.PLAY);
         quitButton = (Button) findViewById(R.id.QUIT);
@@ -45,7 +45,7 @@ public class FaseOneScreen extends SurfaceView implements Runnable { /* Essa é 
 			@Override
 			public void onClick(View v) {
 				
-				/* Aqui sai do jogo; */
+				/* Aqui sai do jogo; 
 				
 				Intent intent = new Intent(Intent.ACTION_MAIN);
 				intent.addCategory(Intent.CATEGORY_HOME);
@@ -55,7 +55,7 @@ public class FaseOneScreen extends SurfaceView implements Runnable { /* Essa é 
 			}
 		});
     	
-    }
+    }  
 	
 	
 	@Override
@@ -92,6 +92,6 @@ public class FaseOneScreen extends SurfaceView implements Runnable { /* Essa é 
 	@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
-	}*/
+	}
 	
-}
+};*/

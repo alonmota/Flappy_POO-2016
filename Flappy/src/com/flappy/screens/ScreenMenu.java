@@ -23,19 +23,20 @@ public class ScreenMenu extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.screen_menu);
-        
+       
         playButon = (Button) findViewById(R.id.PLAY);
         quitButton = (Button) findViewById(R.id.QUIT);
-          
+        
     	playButon.setOnClickListener( new View.OnClickListener() {
-			
+    		 
 			@Override
 			public void onClick(View v) {
 				
-				fase1scr = new Intent(getApplicationContext(), FaseOneScreen.class);
-				startActivity(fase1scr);
+				//  lfase1scr = new Intent(getApplicationContext(), FaseOneScreen.class);
+				//startActivity(fase1scr);
 				
 			};
+			
 		});
     	
     	quitButton.setOnClickListener( new View.OnClickListener() {
@@ -51,6 +52,7 @@ public class ScreenMenu extends Activity {
 				startActivity(intent);
 				
 			}
+			
 		});
     	
     }
