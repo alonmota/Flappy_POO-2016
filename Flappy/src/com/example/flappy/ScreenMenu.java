@@ -1,6 +1,8 @@
 package com.example.flappy;
 
 import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -9,7 +11,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 
-public class ScreenMenu extends ActionBarActivity {
+public class ScreenMenu extends Activity {
 
 	private Button playButon;
 	private Button quitButton;
@@ -26,8 +28,9 @@ public class ScreenMenu extends ActionBarActivity {
 			
 			@Override
 			public void onClick(View v) {
-			
-				Toast.makeText(getApplicationContext(), "Jogar", Toast.LENGTH_LONG).show();
+				
+				Intent fase1scr = new Intent(getApplicationContext(), FaseOneScreen.class);
+				startActivity(fase1scr);
 				
 			};
 		});
@@ -37,7 +40,12 @@ public class ScreenMenu extends ActionBarActivity {
 			@Override
 			public void onClick(View v) {
 				
-				Toast.makeText(getApplicationContext(), "Sair", Toast.LENGTH_LONG).show();
+				/* Aqui sai do jogo; */
+				
+				Intent intent = new Intent(Intent.ACTION_MAIN);
+				intent.addCategory(Intent.CATEGORY_HOME);
+				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				startActivity(intent);
 				
 			}
 		});
