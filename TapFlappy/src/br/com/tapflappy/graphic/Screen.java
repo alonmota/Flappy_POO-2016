@@ -1,4 +1,4 @@
-package com.br.tapflappy.graphic;
+package br.com.tapflappy.graphic;
 
 import android.content.Context;
 import android.util.DisplayMetrics;
@@ -17,9 +17,6 @@ public class Screen {
 	
 	public int getHeight(){
 		return metrics.heightPixels;
-		
-	
-
 	}	
 
 }

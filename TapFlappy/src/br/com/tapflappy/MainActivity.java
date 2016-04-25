@@ -1,12 +1,13 @@
-package com.br.tapflappy;
+package br.com.tapflappy;
 
-import com.br.tapflappy.engine.Game;
+import com.br.tapflappy.R;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
+import br.com.tapflappy.engine.Game;
 
 public class MainActivity extends Activity {
 
@@ -26,14 +27,14 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		game.inicia();
+		game.start();
 		new Thread(game).start();
 	}
 	
 	@Override
 	protected void onPause() {
 		super.onPause();
-		game.pausa();
+		game.pause();
 		
 	}
 }
