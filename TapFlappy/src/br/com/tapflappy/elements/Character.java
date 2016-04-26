@@ -7,15 +7,16 @@ import br.com.tapflappy.graphic.Screen;
 
 public class Character {
 	
-	private static final float L_RECT = 100;
-	private static final float R_RECT = 150;
-	private static final  float RADIUS = 50;
+	public static final float L_RECT = 100;
+	public static final float R_RECT = 150;
+	public static final  float RADIUS = 50;
 	private float height;
 	public float base;
 	
 	private Screen screen;
 	
 	private static final Paint CHAR_COLOR = Colors.getColorOfCharacter();
+	public static final float X = 100;
 	
 	
 	public Character(Screen screen){
@@ -27,8 +28,8 @@ public class Character {
 	}
 
 	public void drawOnThe(Canvas canvas){
-		//canvas.drawCircle(X, height, RADIUS, CHAR_COLOR);
-		canvas.drawRect(L_RECT, height, R_RECT , base, CHAR_COLOR);
+		canvas.drawCircle(L_RECT, height, RADIUS, CHAR_COLOR);
+		//canvas.drawRect(L_RECT, height, R_RECT , base, CHAR_COLOR);
 		
 		
 	}
@@ -51,5 +52,9 @@ public class Character {
 			this.base -= 100;
 		}
 		
+	}
+
+	public float getHeight() {
+		return this.height;
 	}
 }

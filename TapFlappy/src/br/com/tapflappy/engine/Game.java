@@ -11,6 +11,7 @@ import android.view.View.OnTouchListener;
 import br.com.tapflappy.elements.Character;
 import br.com.tapflappy.elements.Obstacle;
 import br.com.tapflappy.elements.Obstacles;
+import br.com.tapflappy.elements.Score;
 import br.com.tapflappy.graphic.Screen;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -23,6 +24,7 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener{
 	private Character character;
 	private Bitmap background;
 	private Screen screen;
+	private Score score;
 	// private Obstacle obstacle;
 	private Obstacles obstacles;
 
@@ -35,8 +37,9 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener{
 	
 	private void setElements() {
 		character = new Character(screen);
+		score = new Score();
 		// obstacle = new Obstacle(screen, 275);
-		obstacles = new Obstacles(screen);
+		obstacles = new Obstacles(screen, score);
 		Bitmap back = BitmapFactory.decodeResource(getResources(), R.drawable.background);
 		background = Bitmap.createScaledBitmap(back, back.getWidth(), screen.getHeight(), false);
 		
@@ -57,6 +60,8 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener{
 			character.drop();
 		//	}
 			
+			
+			
 			// Obstacle actions
 			
 			/* obstacle.drawOnThe(canvas);
@@ -64,6 +69,14 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener{
 			obstacles.drawOnThe(canvas);
 			obstacles.move();
 			
+			//Score actions
+			//Score é desenhada depois dos canos pra ficar em cima deles, e não sobreposto por eles
+			//as camadas são desenhadas na ordem do código
+			score.drawOnThe(canvas);
+			
+			if(new CollisionCheker(character, obstacles).hasCollision() ){
+				isRunning = false;
+			}
 			
 			holder.unlockCanvasAndPost(canvas);
 		

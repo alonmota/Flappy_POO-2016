@@ -46,11 +46,28 @@ public class Obstacle {
 
 	public boolean outOfBounds() {
 		
-		return position + OBST_WIDTH < 0; // lateral direita do obstaculo sai da tela (passa da menor posicao possivel, que eh o 0) = obstaculo invisivel
+		return position + OBST_WIDTH < 0; /* lateral direita do obstaculo 
+											sai da tela (passa da menor posicao possivel,
+											 que eh o 0) = obstaculo invisivel
+		 								*/
 	}
 
 	public int getPosition() {
 		return position;
+	}
+
+	public boolean hasHorizontalCollisionWith(Character character) {
+		
+		return this.position < character.L_RECT + character.RADIUS;/*se a posição do personagem + seu raio
+		 															for maior que a posição do cano, 
+		 															significa que houve colisão do passaro com a tela
+		 															*/
+	}
+
+	public boolean hasVerticalCollisionWith(Character character) {
+		
+		return character.getHeight() - character.RADIUS < this.superiorObstacleHeight
+				|| character.getHeight() + character.RADIUS > this.inferiorObstacleHeight;
 	}
 
 }

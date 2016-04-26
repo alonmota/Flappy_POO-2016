@@ -15,10 +15,12 @@ public class Obstacles {
 	private final List<Obstacle> obstacles = new ArrayList<Obstacle>();
 	
 	private Screen screen;
+	private Score score;
 
-	public Obstacles(Screen screen) {
+	public Obstacles(Screen screen, Score score) {
 		this.screen = screen;
 		int position = 275;
+		this.score = score;
 		
 		for (int i = 0; i < NUM_OF_OBST; i++) {
 			position += OBST_DIST;
@@ -41,6 +43,7 @@ public class Obstacles {
 			Obstacle obstacle = iterator.next();
 			obstacle.move();
 			if(obstacle.outOfBounds()){
+				score.aumenta(); //aumenta a pontuação quando o cano passa sai da tela
 				// gerar novo obstaculo e apagar antigo
 				iterator.remove();
 				Obstacle auxObstacle = new Obstacle(screen, getMaxPos() + OBST_DIST);
@@ -55,6 +58,16 @@ public class Obstacles {
 			max = Math.max(obstacle.getPosition(), max);
 		}
 		return max;
+	}
+
+	public boolean hasCollisionWith(Character character) {
+		for(Obstacle obstacle : obstacles) {
+			if(obstacle.hasHorizontalCollisionWith(character) 
+					&& obstacle.hasVerticalCollisionWith(character)){
+				return true;
+			}
+		}
+		return false;
 	}
 	
 }
