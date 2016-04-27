@@ -74,7 +74,7 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener{
 			//as camadas são desenhadas na ordem do código
 			score.drawOnThe(canvas);
 			
-			if(new CollisionCheker(character, obstacles).hasCollision() ){
+			if(new CollisionChecker(character, obstacles).hasCollision() ){
 				isRunning = false;
 			}
 			
