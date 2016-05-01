@@ -1,5 +1,7 @@
 package br.com.tapflappy.engine;
 
+import com.br.tapflappy.R;
+
 //import android.content.R
 //import br.com.tapflappy.R;
 import android.content.Context;
@@ -8,7 +10,7 @@ import android.media.SoundPool;
 
 public class Sound {
 	//Constructor
-	Sound(){
+	public Sound(Context context){
 		pool = new SoundPool(3, AudioManager.STREAM_MUSIC, 0);
 		
 		//Definição de Assets
