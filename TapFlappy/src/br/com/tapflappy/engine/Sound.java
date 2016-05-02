@@ -2,13 +2,11 @@ package br.com.tapflappy.engine;
 
 import com.br.tapflappy.R;
 
-//import android.content.R
-//import br.com.tapflappy.R;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.SoundPool;
 
-public class Sound {
+public class Sound{
 	//Constructor
 	public Sound(Context context){
 		pool = new SoundPool(3, AudioManager.STREAM_MUSIC, 0);

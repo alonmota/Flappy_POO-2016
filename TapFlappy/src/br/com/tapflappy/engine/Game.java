@@ -25,18 +25,20 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener{
 	private Bitmap background;
 	private Screen screen;
 	private Score score;
+	private Sound sound;
 	// private Obstacle obstacle;
 	private Obstacles obstacles;
 
 	public Game(Context context) {
 		super(context);
 		screen = new Screen(context);
+		sound = new Sound(context);
 		setElements();
 		setOnTouchListener(this);
 	}
 	
 	private void setElements() {
-		character = new Character(screen);
+		character = new Character(screen, sound);
 		score = new Score();
 		// obstacle = new Obstacle(screen, 275);
 		obstacles = new Obstacles(screen, score);

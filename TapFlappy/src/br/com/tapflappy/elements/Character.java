@@ -4,6 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import br.com.tapflappy.graphic.Colors;
 import br.com.tapflappy.graphic.Screen;
+import br.com.tapflappy.engine.Sound;
 
 public class Character {
 	
@@ -14,14 +15,16 @@ public class Character {
 	public float base;
 	
 	private Screen screen;
+	private Sound sound;
 	
 	private static final Paint CHAR_COLOR = Colors.getColorOfCharacter();
 	public static final float X = 100;
 	
 	
-	public Character(Screen screen){
+	public Character(Screen screen, Sound sound){
 		
 		this.screen = screen;
+		this.sound = sound;
 		this.base = 150;
 		this.height = 100;
 		
@@ -46,10 +49,12 @@ public class Character {
 	}
 
 	public void jump() {
-		
 		if(height > 0){
 			this.height -= 100;
 			this.base -= 100;
+			
+			sound.play(Sound.PULO);
+			//PULO é static, portanto acessado através diretamente da classe
 		}
 		
 	}
