@@ -1,5 +1,7 @@
 package com.example.flappy;
 
+import br.com.tapflappy.MainActivity;
+
 import com.example.flappy.R;
 import com.example.flappy.R.id;
 import com.example.flappy.R.layout;
@@ -32,10 +34,8 @@ public class ScreenMenu extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				
-			//	Intent fase1scr = new Intent(getApplicationContext(), FaseOneScreen.class);
-			//	startActivity(fase1scr);
-				
+				Intent fase1scr = new Intent(ScreenMenu.this/*v.getContext()getApplicationContext()*/, MainActivity.class);
+				startActivity(fase1scr);
 			};
 		});
     	

@@ -5,5 +5,21 @@
 <fullyQualifiedTypeName name="android.widget.Button"/>
 <fullyQualifiedTypeName name="org.poo.projeto.parallel.R.id"/>
 <fullyQualifiedTypeName name="org.andengine.opengl.texture.atlas.bitmap.BuildableBitmapTextureAtlas"/>
+<fullyQualifiedTypeName name="android.widget.ImageView"/>
+<fullyQualifiedTypeName name="android.widget.ImageButton"/>
+<fullyQualifiedTypeName name="java.lang.Runnable"/>
+<fullyQualifiedTypeName name="android.view.SurfaceView"/>
+<fullyQualifiedTypeName name="android.widget.FrameLayout"/>
+<fullyQualifiedTypeName name="com.example.flappy.R.layout"/>
+<fullyQualifiedTypeName name="com.example.flappy.GameView"/>
+<fullyQualifiedTypeName name="java.lang.Thread"/>
+<fullyQualifiedTypeName name="com.flappy.scenePieces.Obstacles"/>
+<fullyQualifiedTypeName name="br.com.tapflappy.MainActivity"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
 <fullyQualifiedTypeName name="android.widget.Toast"/>
+<fullyQualifiedTypeName name="com.example.flappy.ScreenMenu"/>
+<fullyQualifiedTypeName name="android.app.Activity"/>
+<fullyQualifiedTypeName name="android.R"/>
+<fullyQualifiedTypeName name="android.R.layout"/>
+<fullyQualifiedTypeName name="com.br.tapflappy.R.layout"/>
 </qualifiedTypeNameHistroy>
