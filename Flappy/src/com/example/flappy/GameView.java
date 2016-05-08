@@ -1,5 +1,7 @@
 package com.example.flappy;
 
+import com.flappy.scenePieces.Obstacles;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
@@ -9,6 +11,8 @@ import android.view.View;
 public class GameView extends SurfaceView implements Runnable{
 
 	private boolean isRunning = true;
+	private Character character;
+	private Obstacles obstacles;
 	
 	public GameView(Context context, AttributeSet attrs, int defStyleAttr,
 			int defStyleRes) {
