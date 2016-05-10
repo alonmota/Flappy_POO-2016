@@ -9,6 +9,7 @@ import android.graphics.Canvas;
 import android.view.MotionEvent;
 import android.view.View.OnTouchListener;
 import br.com.tapflappy.elements.Character;
+import br.com.tapflappy.elements.GameOver;
 import br.com.tapflappy.elements.Obstacle;
 import br.com.tapflappy.elements.Obstacles;
 import br.com.tapflappy.elements.Score;
@@ -28,6 +29,7 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener{
 	private Sound sound;
 	// private Obstacle obstacle;
 	private Obstacles obstacles;
+	private GameOver gameover;
 
 	public Game(Context context) {
 		super(context);
@@ -40,6 +42,7 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener{
 	private void setElements() {
 		character = new Character(screen, sound);
 		score = new Score();
+		gameover = new GameOver();
 		// obstacle = new Obstacle(screen, 275);
 		obstacles = new Obstacles(screen, score);
 		Bitmap back = BitmapFactory.decodeResource(getResources(), R.drawable.background);
@@ -77,6 +80,7 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener{
 			score.drawOnThe(canvas);
 			
 			if(new CollisionChecker(character, obstacles).hasCollision() ){
+				gameover.drawOnThe(canvas, screen);
 				isRunning = false;
 			}
 			
