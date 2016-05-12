@@ -34,9 +34,11 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 	private int alternador;
 	private int variante1;
 	private int variante2;
+	private Context context;
 
 	public Game(Context context) {
 		super(context);
+		this.context = context;
 		screen = new Screen(context);
 		sound = new Sound(context);
 		setElements();
@@ -44,7 +46,7 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 	}
 
 	private void setElements() {
-		character = new Character(screen, sound);
+		character = new Character(screen, sound, context);
 		score = new Score();
 		gameover = new GameOver();
 		// obstacle = new Obstacle(screen, 275);
@@ -55,7 +57,7 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 		// background auxiliar
 		Bitmap back2 = BitmapFactory.decodeResource(getResources(), R.drawable.background2);
 		background2 = Bitmap.createScaledBitmap(back2, back.getWidth(), screen.getHeight(), false);
-
+		
 		alternador = 1;
 		variante1 = 0;
 		variante2 = 0;

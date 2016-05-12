@@ -7,6 +7,11 @@ import android.util.Log;
 import br.com.tapflappy.graphic.Colors;
 import br.com.tapflappy.graphic.Screen;
 import br.com.tapflappy.engine.Sound;
+import com.br.tapflappy.R;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
 
 public class Character {
 
@@ -22,25 +27,27 @@ public class Character {
 	public float base;
 	private Screen screen;
 	private Sound sound;
+	private Bitmap character;
 	
 
 	private static final Paint CHAR_COLOR = Colors.getColorOfCharacter();
 	public static final float X = 100;
 
 
-	public Character(Screen screen, Sound sound) {
+	public Character(Screen screen, Sound sound, Context context) {
 
 		this.screen = screen;
 		this.sound = sound;
 		this.base = 150;
 		this.height = 100;
-
+		Bitmap bp = BitmapFactory.decodeResource(context.getResources(), R.drawable.character);
+		this.character = Bitmap.createScaledBitmap(bp, (int)RADIUS*2, (int)RADIUS*2, false);
 	}
 
 	public void drawOnThe(Canvas canvas) {
-		canvas.drawCircle(L_RECT, (float) height, RADIUS, CHAR_COLOR);
+		//canvas.drawCircle(L_RECT, (float) height, RADIUS, CHAR_COLOR);
 		// canvas.drawRect(L_RECT, height, R_RECT , base, CHAR_COLOR);
-
+		canvas.drawBitmap(character, X - RADIUS, (float) (height - RADIUS), null);
 	}
 
 	public void drop() {

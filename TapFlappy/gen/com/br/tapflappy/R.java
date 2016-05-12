@@ -14,18 +14,19 @@ public final class R {
         public static final int background1=0x7f020000;
         public static final int background2=0x7f020001;
         public static final int cano=0x7f020002;
-        public static final int fase_1_background=0x7f020003;
-        public static final int fase_2_background=0x7f020004;
-        public static final int ic_launcher=0x7f020005;
-        public static final int menu_background=0x7f020006;
-        public static final int passaro=0x7f020007;
-        public static final int pause_icon=0x7f020008;
-        public static final int play_down=0x7f020009;
-        public static final int play_up=0x7f02000a;
-        public static final int quit_down=0x7f02000b;
-        public static final int quit_up=0x7f02000c;
-        public static final int settings_down=0x7f02000d;
-        public static final int settings_up=0x7f02000e;
+        public static final int character=0x7f020003;
+        public static final int fase_1_background=0x7f020004;
+        public static final int fase_2_background=0x7f020005;
+        public static final int ic_launcher=0x7f020006;
+        public static final int menu_background=0x7f020007;
+        public static final int passaro=0x7f020008;
+        public static final int pause_icon=0x7f020009;
+        public static final int play_down=0x7f02000a;
+        public static final int play_up=0x7f02000b;
+        public static final int quit_down=0x7f02000c;
+        public static final int quit_up=0x7f02000d;
+        public static final int settings_down=0x7f02000e;
+        public static final int settings_up=0x7f02000f;
     }
     public static final class id {
         public static final int PLAY=0x7f070001;
