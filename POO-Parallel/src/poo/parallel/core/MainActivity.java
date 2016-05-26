@@ -1,5 +1,20 @@
 package poo.parallel.core;
 
+/**
+ * Secao Core
+ * 
+ * Classe Main: 
+ * 	Trata da execucao do jogo, por fim.
+ *
+ *	- Relacao estrita com:
+ *		-- Classes da secao Core.
+ * 
+ * :O
+ * 
+ * @author Rafael
+ * 
+ */
+
 import poo.parallel.R;
 import android.app.Activity;
 import android.os.Bundle;
