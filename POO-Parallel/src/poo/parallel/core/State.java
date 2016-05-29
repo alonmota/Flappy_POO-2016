@@ -21,12 +21,12 @@ import java.util.Vector;
  * 
  * :O
  * 
- * @author Rafael
+ * @author Rafael, Thales
  * 
  */
 
 
-public class State {
+public abstract class State {
 		public State(){}
 		/*	Construtor Padrão.
 		 * 

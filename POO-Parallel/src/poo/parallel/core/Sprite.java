@@ -13,7 +13,7 @@ package poo.parallel.core;
  * 
  * :O
  * 
- * @author Rafael
+ * @author Rafael, Thales
  * 
  */
 
@@ -42,7 +42,7 @@ public class Sprite {
 		 * 		subsequentes complexidades da figura:
 		 * 
 		 * 	Sprite() inicializa uma figura sem textura (imagem)
-		 * 		- Útil basicamente apenas para texto, se é que isso é verdade
+		 * 		- Útil basicamente apenas para texto, se é que isso é verdade (??)
 		 * 
 		 * 	Sprite(String file) carrega uma textura (file) e incializa uma
 		 * 		figura a ela associada

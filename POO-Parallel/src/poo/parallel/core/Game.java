@@ -2,6 +2,9 @@ package poo.parallel.core;
 
 import java.util.Stack;
 
+import android.graphics.Canvas;
+import br.com.tapflappy.engine.CollisionChecker;
+
 /**
  * Secao Core
  * 
@@ -20,12 +23,12 @@ import java.util.Stack;
  * 
  * :O
  * 
- * @author Rafael
+ * @author Rafael, Thales
  * 
  */
 
 
-public class Game {
+public class Game implements Runnable {
 
 	//public:
 	
@@ -33,17 +36,23 @@ public class Game {
 	/*	O construtor fica responsável por inicializar TODOS os subsitemas
 	 * 		exigidos pelo programa, e certificar que estão em pleno funcionamento.
 	 * 		Recebe como parâmetro as dimensões da janela e o nome do executável,
-	 * 		se for o caso. 
+	 * 		se for o caso.
+	 * 
+	 *  R: No caso de ser no Android, talvez tenhamos que ver essa questao das dimen-
+	 *  	soes da janela, pois, a meu ver, estamos trabalhando com views varia-
+	 *  	veis de distintos celulares. Nao sei muito bem como seria isso.
 	 *  
 	 *	Em C++, haveria um destrutor para finalizar os subsistemas e certificar
 	 *		o final da execução do jogo. Se vier a ser conveniente, podemos
 	 *		implementar uma função close() que tome conta disso.
 	 */
 
-	public	void Run(){}
+	@Override
+	public	void run(){} //Runnable!
+	
 	public	void Push(State state){}
 	/*	Run() é o main loop de jogo. Consiste basicamente em:
-	 * 		1. Verificar se exista algum estado a ser inserido no topo
+	 * 		1. Verificar se existe algum estado a ser inserido no topo
 	 * 			da pilha (equivalente de: houve ou não mudança na máquina
 	 * 			de estados da nossa arquitetura). Se houver sido requisitada
 	 * 			a saída do jogo, o loop deve ser encerrado aqui.
@@ -66,10 +75,11 @@ public class Game {
 	 * 		Novamente, dependendo de como for a implementação da máquina de
 	 * 			estados no jogo, talvez o passo 1 se torne obsoleto
 	 */
-
+	
 	
 	//public	SDL_Renderer	GetRenderer(){}
 	public	State			GetState(){}
+	
 	public	static Game		GetInstance(){}
 	/*	Métodos de Acesso: Muitas das classes exigirão a chamada de
 	 * 		métodos em Game e em membros internos a ela.
@@ -136,7 +146,7 @@ public class Game {
 	 */
 
 	private	State			storedState;	//Estado Corrente do Jogo
-	private	Stack <State>	stateStack; //Pilha de Estados
+	private	Stack <State>	stateStack;		//Pilha de Estados
 	/*	Esses dois membros se responsabilizam basicamente por manipular
 	 * 		os estados de jogo (menu, opções, fase, game over, etc...).
 	 * 
@@ -162,6 +172,7 @@ public class Game {
 	 * 		funcionalidade com a implementação já feita e funcional
 	 * 		dos menus e estados.
 	 */
+	
 
 	
 	//private	SDL_Window		window;
