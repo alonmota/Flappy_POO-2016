@@ -96,9 +96,15 @@ public class Sprite {
 		 */
 
 		//Métodos de Acesso
-		int 	GetWidth(){}
-		int 	GetHeight(){}
-		boolean IsOpen(){}
+		int 	GetWidth(){
+			return 1; //EDITAAAAAAAAAAAAAAAA
+		}
+		int 	GetHeight(){
+			return 1; //EDITAAAAAAAAAAAAAAAA
+		}
+		boolean IsOpen(){
+			return true; //EDITAAAAAAAAAAAAAAAA
+		}
 		/*	Métodos de retorno de informações a respeito da sprite.
 		 * 		Outras classes necessitarão isso
 		 */

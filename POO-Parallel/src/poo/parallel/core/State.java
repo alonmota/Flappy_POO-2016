@@ -37,7 +37,9 @@ public abstract class State {
 		 * 	Do contrário há de se analizar como compatibilizar a
 		 * 		estrutura antiga com esse conceito
 		 */
-
+		private static State INSTANCE;
+		
+		
 		public void AddObject(GameObject ptr){}
 		/*	GameObject é a Interface que os Actors implementam
 		 * 		É basicamente uma abstração que State necessita
@@ -64,7 +66,14 @@ public abstract class State {
 		//	Não implementadas :: Descartar
 		 
 
-		public boolean PopRequested(){return popRequested;}
+		public void setState(State s){
+			INSTANCE = s;
+		}
+		
+		public static State getState(){
+			return INSTANCE;
+		}
+		
 		/*	Função que verifica condição de saída do estado atual.
 		 * 		Game deve chamá-la durante a execução do loop, para
 		 * 		verificar se deve ou não executar Pop na pilha.
@@ -90,7 +99,7 @@ public abstract class State {
 		 * 		de renderização.
 		 */
 
-		protected boolean popRequested;
+		
 		protected boolean quitRequested;
 		/*	Variáveis de controle sobre o estado do estado (isso faz sentido?)
 		 */

@@ -37,7 +37,7 @@ public class Input extends SurfaceView implements OnTouchListener {
 
 	@Override
 	public boolean onTouch(View v, MotionEvent event) {
-		// PULO!!
+		character.jump();
 		return false;
 	}
 

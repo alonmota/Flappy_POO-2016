@@ -2,8 +2,11 @@ package poo.parallel.core;
 
 import java.util.Stack;
 
+import android.content.Context;
 import android.graphics.Canvas;
-import br.com.tapflappy.engine.CollisionChecker;
+import android.view.SurfaceView;
+import poo.parallel.physics.CollisionChecker;
+import poo.parallel.core.State;
 
 /**
  * Secao Core
@@ -28,11 +31,16 @@ import br.com.tapflappy.engine.CollisionChecker;
  */
 
 
-public class Game implements Runnable {
+public class Game extends SurfaceView implements Runnable {
 
 	//public:
-	
-	public	Game(String title, int width, int height){}	//Construtor Padrão
+	private Context context;
+	//public	Game(String title, int width, int height){}	//Construtor Padrão
+	public	Game(Context context){
+		super(context);
+		this.context = context;
+		
+	}	//Construtor Padrão
 	/*	O construtor fica responsável por inicializar TODOS os subsitemas
 	 * 		exigidos pelo programa, e certificar que estão em pleno funcionamento.
 	 * 		Recebe como parâmetro as dimensões da janela e o nome do executável,
@@ -46,11 +54,22 @@ public class Game implements Runnable {
 	 *		o final da execução do jogo. Se vier a ser conveniente, podemos
 	 *		implementar uma função close() que tome conta disso.
 	 */
-
-	@Override
-	public	void run(){} //Runnable!
+	private boolean isRunning = true;
 	
-	public	void Push(State state){}
+	@Override
+	public	void run(){		//Runnable!
+		
+		while(isRunning){
+			Input.Update();
+			
+			State.getState().Update(dt);
+			State.getState().Render();
+			
+		}
+		
+	} 
+	
+	
 	/*	Run() é o main loop de jogo. Consiste basicamente em:
 	 * 		1. Verificar se existe algum estado a ser inserido no topo
 	 * 			da pilha (equivalente de: houve ou não mudança na máquina
@@ -78,9 +97,11 @@ public class Game implements Runnable {
 	
 	
 	//public	SDL_Renderer	GetRenderer(){}
-	public	State			GetState(){}
 	
-	public	static Game		GetInstance(){}
+	
+	public	static Game	GetInstance(){
+		return instance;
+	}
 	/*	Métodos de Acesso: Muitas das classes exigirão a chamada de
 	 * 		métodos em Game e em membros internos a ela.
 	 * 
@@ -99,7 +120,9 @@ public class Game implements Runnable {
 	 * 
 	 */
 
-	public	float	GetDeltatime(){}
+	public	float	GetDeltatime(){
+		return dt;
+	}
 		/*	Método que retorna o tempo decorrido desde o último frame.
 		 * 		Descrição do método de temporização abaixo.
 		 */
@@ -145,8 +168,8 @@ public class Game implements Runnable {
 	 * 		não importa muito como isso seja resolvido.
 	 */
 
-	private	State			storedState;	//Estado Corrente do Jogo
-	private	Stack <State>	stateStack;		//Pilha de Estados
+	//private	State			storedState;	//Estado Corrente do Jogo
+	//private	Stack <State>	stateStack;		//Pilha de Estados
 	/*	Esses dois membros se responsabilizam basicamente por manipular
 	 * 		os estados de jogo (menu, opções, fase, game over, etc...).
 	 * 
@@ -182,4 +205,13 @@ public class Game implements Runnable {
 	 * 		informações em tela. São para ser substituídos por o que quer
 	 * 		que seja a implementação android respectiva
 	 */
+	public void start() {
+		isRunning = true;
+
+	}
+
+	public void pause() {
+		isRunning = false;
+
+	}
 }
