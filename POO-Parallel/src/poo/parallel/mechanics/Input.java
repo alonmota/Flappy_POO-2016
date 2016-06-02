@@ -40,9 +40,10 @@ public class Input extends SurfaceView implements OnTouchListener {
 		//character.jump();
 		return false;
 	}
-	
+	/**TODO
+	 * implementar character, e o metodo update.
+	 * */
 	public static boolean update() {
-		//character.jump();
 		return false;
 	}
 

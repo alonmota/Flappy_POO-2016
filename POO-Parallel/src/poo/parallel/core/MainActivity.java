@@ -22,6 +22,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+/**TODO 
+ * Criar activity que ira gerenciar o jogo, para poder instanciar ela daqui
+ * */
+
 public class MainActivity extends Activity {
 	private Button playButon;
 	private Button quitButton;
