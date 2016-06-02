@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.view.SurfaceView;
 import poo.parallel.physics.CollisionChecker;
 import poo.parallel.core.State;
+import poo.parallel.mechanics.Input;
 
 /**
  * Secao Core
@@ -35,15 +36,15 @@ public class Game extends SurfaceView implements Runnable {
 
 	//public:
 	private Context context;
-	//public	Game(String title, int width, int height){}	//Construtor Padrão
+	//public	Game(String title, int width, int height){}	//Construtor Padrï¿½o
 	public	Game(Context context){
 		super(context);
 		this.context = context;
 		
-	}	//Construtor Padrão
-	/*	O construtor fica responsável por inicializar TODOS os subsitemas
-	 * 		exigidos pelo programa, e certificar que estão em pleno funcionamento.
-	 * 		Recebe como parâmetro as dimensões da janela e o nome do executável,
+	}	//Construtor Padrï¿½o
+	/*	O construtor fica responsï¿½vel por inicializar TODOS os subsitemas
+	 * 		exigidos pelo programa, e certificar que estï¿½o em pleno funcionamento.
+	 * 		Recebe como parï¿½metro as dimensï¿½es da janela e o nome do executï¿½vel,
 	 * 		se for o caso.
 	 * 
 	 *  R: No caso de ser no Android, talvez tenhamos que ver essa questao das dimen-
@@ -51,8 +52,8 @@ public class Game extends SurfaceView implements Runnable {
 	 *  	veis de distintos celulares. Nao sei muito bem como seria isso.
 	 *  
 	 *	Em C++, haveria um destrutor para finalizar os subsistemas e certificar
-	 *		o final da execução do jogo. Se vier a ser conveniente, podemos
-	 *		implementar uma função close() que tome conta disso.
+	 *		o final da execuï¿½ï¿½o do jogo. Se vier a ser conveniente, podemos
+	 *		implementar uma funï¿½ï¿½o close() que tome conta disso.
 	 */
 	private boolean isRunning = true;
 	
@@ -60,7 +61,7 @@ public class Game extends SurfaceView implements Runnable {
 	public	void run(){		//Runnable!
 		
 		while(isRunning){
-			Input.Update();
+			Input.update();
 			
 			State.getState().Update(dt);
 			State.getState().Render();
@@ -70,28 +71,28 @@ public class Game extends SurfaceView implements Runnable {
 	} 
 	
 	
-	/*	Run() é o main loop de jogo. Consiste basicamente em:
+	/*	Run() ï¿½ o main loop de jogo. Consiste basicamente em:
 	 * 		1. Verificar se existe algum estado a ser inserido no topo
-	 * 			da pilha (equivalente de: houve ou não mudança na máquina
+	 * 			da pilha (equivalente de: houve ou nï¿½o mudanï¿½a na mï¿½quina
 	 * 			de estados da nossa arquitetura). Se houver sido requisitada
-	 * 			a saída do jogo, o loop deve ser encerrado aqui.
+	 * 			a saï¿½da do jogo, o loop deve ser encerrado aqui.
 	 * 
 	 * 		2. Uma vez determinado o estado a ser processado, fazer update em
 	 * 			Input (por meio do acesso ao pacote mechanics.input), que
-	 * 			será consultado por State
+	 * 			serï¿½ consultado por State
 	 * 
 	 * 		3. Chamar o processamento no estado atual com o intervalo de
 	 * 			tempo calculado (dt, a partir de CalculateDeltaTime() - 
-	 * 			é importante a existência desse temporizador para cálculos
-	 * 			de física no jogo, para que independam de framerate etc.)
+	 * 			ï¿½ importante a existï¿½ncia desse temporizador para cï¿½lculos
+	 * 			de fï¿½sica no jogo, para que independam de framerate etc.)
 	 * 
-	 * 		4. Chamar a renderização no estado - todos os objetos devem
-	 * 			se imprimir por conta própria.
+	 * 		4. Chamar a renderizaï¿½ï¿½o no estado - todos os objetos devem
+	 * 			se imprimir por conta prï¿½pria.
 	 * 
 	 * 		5. Se isso se aplicar: Update no renderizador, para fazer com
-	 * 			que as imagens de fato apareçam na tela.
+	 * 			que as imagens de fato apareï¿½am na tela.
 	 * 
-	 * 		Novamente, dependendo de como for a implementação da máquina de
+	 * 		Novamente, dependendo de como for a implementaï¿½ï¿½o da mï¿½quina de
 	 * 			estados no jogo, talvez o passo 1 se torne obsoleto
 	 */
 	
@@ -102,29 +103,29 @@ public class Game extends SurfaceView implements Runnable {
 	public	static Game	GetInstance(){
 		return instance;
 	}
-	/*	Métodos de Acesso: Muitas das classes exigirão a chamada de
-	 * 		métodos em Game e em membros internos a ela.
+	/*	Mï¿½todos de Acesso: Muitas das classes exigirï¿½o a chamada de
+	 * 		mï¿½todos em Game e em membros internos a ela.
 	 * 
 	 * 		1. Renderer: Classe da SDL que lida com o processamento
-	 * 			de texturas e a impressão delas em tela. Deverá ser
-	 * 			substituido pela implementação android adequada.
+	 * 			de texturas e a impressï¿½o delas em tela. Deverï¿½ ser
+	 * 			substituido pela implementaï¿½ï¿½o android adequada.
 	 * 
 	 * 		2. State: Descrito em mais detalhes adiante.
 	 * 
-	 * 		3. Game: Em C++, é proposta a implementação de um singleton
+	 * 		3. Game: Em C++, ï¿½ proposta a implementaï¿½ï¿½o de um singleton
 	 * 			(modelo de arquitetura de classe) para game, pois permite
 	 * 			a todas as classes do jogo que se comuniquem com game
-	 * 			a qualquer momento. Por isso a existência do método
+	 * 			a qualquer momento. Por isso a existï¿½ncia do mï¿½todo
 	 * 			GetInstance(). Pode ser descartado se implementarmos
-	 * 			Game como uma classe estática.
+	 * 			Game como uma classe estï¿½tica.
 	 * 
 	 */
 
 	public	float	GetDeltatime(){
 		return dt;
 	}
-		/*	Método que retorna o tempo decorrido desde o último frame.
-		 * 		Descrição do método de temporização abaixo.
+		/*	Mï¿½todo que retorna o tempo decorrido desde o ï¿½ltimo frame.
+		 * 		Descriï¿½ï¿½o do mï¿½todo de temporizaï¿½ï¿½o abaixo.
 		 */
 	
 	//private:
@@ -132,53 +133,53 @@ public class Game extends SurfaceView implements Runnable {
 	private	void	CalculateDeltaTime(){}
 	private	int		frameStart;
 	private	float	dt;
-	/*	Elementos de temporização: servem basicamente para cálculos
-	 * 		físicos do jogo. dt é calculado no início do loop e
-	 * 		passado como parâmetro para a chamada de Update no estado
-	 * 		corrente, que então o passa para o update de todas as entidades
+	/*	Elementos de temporizaï¿½ï¿½o: servem basicamente para cï¿½lculos
+	 * 		fï¿½sicos do jogo. dt ï¿½ calculado no inï¿½cio do loop e
+	 * 		passado como parï¿½metro para a chamada de Update no estado
+	 * 		corrente, que entï¿½o o passa para o update de todas as entidades
 	 * 		subsequentes.
 	 * 
 	 * 	Por exemplo: suponha que o jogador apertou para a direita:
-	 * 		O loop fará update no input, de forma que seja possível
-	 * 		detectar o comando, e então calculará quanto tempo se passou
-	 * 		desde o início do frame. Com isso e com a velocidade do
-	 * 		player, é feito o cálculo da nova posição.
+	 * 		O loop farï¿½ update no input, de forma que seja possï¿½vel
+	 * 		detectar o comando, e entï¿½o calcularï¿½ quanto tempo se passou
+	 * 		desde o inï¿½cio do frame. Com isso e com a velocidade do
+	 * 		player, ï¿½ feito o cï¿½lculo da nova posiï¿½ï¿½o.
 	 * 
 	 * Isso resolve 2 problemas:
-	 * 		1. Framerate variável: O cálculo da física independe (até
+	 * 		1. Framerate variï¿½vel: O cï¿½lculo da fï¿½sica independe (atï¿½
 	 * 			certo ponto) da quantidade de frames disposta por segundo,
-	 * 			já que o jogo deixa de utilizar a contagem de frames como
-	 * 			parâmetro de tempo.
+	 * 			jï¿½ que o jogo deixa de utilizar a contagem de frames como
+	 * 			parï¿½metro de tempo.
 	 * 
-	 * 		2. Timers: Na implementação final do jogo foi necessária a
-	 * 			presença de uma classe temporizadora, para processamento
-	 * 			de animações, ou mesmo para in-game timers (HUD). Secundário.
+	 * 		2. Timers: Na implementaï¿½ï¿½o final do jogo foi necessï¿½ria a
+	 * 			presenï¿½a de uma classe temporizadora, para processamento
+	 * 			de animaï¿½ï¿½es, ou mesmo para in-game timers (HUD). Secundï¿½rio.
 	 */
 
 	private	static Game	instance;
-	/*	Deixei aqui mais por caráter ilustrativo, já que não faz
-	 * 		sentido a permanência dessa variável. O ponteiro
-	 * 		Game* instance tinha como propósito apenas possibilitar
-	 * 		que outras classes do jogo acessassem a instância para
-	 * 		obter informações importantes para processamento, por
-	 * 		exemplo, de física (GetDeltaTime()) ou de renderização
+	/*	Deixei aqui mais por carï¿½ter ilustrativo, jï¿½ que nï¿½o faz
+	 * 		sentido a permanï¿½ncia dessa variï¿½vel. O ponteiro
+	 * 		Game* instance tinha como propï¿½sito apenas possibilitar
+	 * 		que outras classes do jogo acessassem a instï¿½ncia para
+	 * 		obter informaï¿½ï¿½es importantes para processamento, por
+	 * 		exemplo, de fï¿½sica (GetDeltaTime()) ou de renderizaï¿½ï¿½o
 	 * 		(GetRenderer()) ou processamento (GetState())
 	 * 
-	 * O importante é: as classes vão precisar acessar métodos em Game,
-	 * 		não importa muito como isso seja resolvido.
+	 * O importante ï¿½: as classes vï¿½o precisar acessar mï¿½todos em Game,
+	 * 		nï¿½o importa muito como isso seja resolvido.
 	 */
 
 	//private	State			storedState;	//Estado Corrente do Jogo
 	//private	Stack <State>	stateStack;		//Pilha de Estados
 	/*	Esses dois membros se responsabilizam basicamente por manipular
-	 * 		os estados de jogo (menu, opções, fase, game over, etc...).
+	 * 		os estados de jogo (menu, opï¿½ï¿½es, fase, game over, etc...).
 	 * 
-	 * 	Talvez seja o caso de descartá-los e utilizar a mecânica de
-	 * 		menus etc. já desenvolvido, pode ser mais simples e menos
+	 * 	Talvez seja o caso de descartï¿½-los e utilizar a mecï¿½nica de
+	 * 		menus etc. jï¿½ desenvolvido, pode ser mais simples e menos
 	 * 		propenso a erro.
 	 * 
 	 * 
-	 * 	De uma forma ou de outra, a ideia da abstração de State para
+	 * 	De uma forma ou de outra, a ideia da abstraï¿½ï¿½o de State para
 	 * 		game tem um objetivo: State deve centralizar o contato
 	 * 		do jogo com os objetos por ele processados, de forma que
 	 * 		com cada loop em Game::Run(), haja apenas as chamadas:
@@ -186,13 +187,13 @@ public class Game extends SurfaceView implements Runnable {
 	 * 		State.Update(dt) e 
 	 * 		State.Render().
 	 * 
-	 * 	Essas chamadas são o suficiente para Game - State se torna
-	 * 		responsável por passar adiante para todos os objetos de
+	 * 	Essas chamadas sï¿½o o suficiente para Game - State se torna
+	 * 		responsï¿½vel por passar adiante para todos os objetos de
 	 * 		jogo as chamadas subsequentes em GameObject.Update(dt)
 	 * 		e GameObject.Render(), por exemplo.
 	 * 
 	 * 	Resta saber qual a melhor forma de se compatibilizar essa
-	 * 		funcionalidade com a implementação já feita e funcional
+	 * 		funcionalidade com a implementaï¿½ï¿½o jï¿½ feita e funcional
 	 * 		dos menus e estados.
 	 */
 	
@@ -200,10 +201,10 @@ public class Game extends SurfaceView implements Runnable {
 	
 	//private	SDL_Window		window;
 	//private	SDL_Renderer	renderer;
-	/*	Esses dois membros carregam as informações básicas necessárias para
+	/*	Esses dois membros carregam as informaï¿½ï¿½es bï¿½sicas necessï¿½rias para
 	 * 		que o jogo possa se renderizar e responder como um programa com
-	 * 		informações em tela. São para ser substituídos por o que quer
-	 * 		que seja a implementação android respectiva
+	 * 		informaï¿½ï¿½es em tela. Sï¿½o para ser substituï¿½dos por o que quer
+	 * 		que seja a implementaï¿½ï¿½o android respectiva
 	 */
 	public void start() {
 		isRunning = true;

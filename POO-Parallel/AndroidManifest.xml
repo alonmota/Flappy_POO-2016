@@ -16,24 +16,14 @@
         
         <!-- Verificar depois essa atividade relacionada ao menu principal  -->
         
-        <activity
-            android:name=".core.MainActivity.main_menu.MainMenu"
+      <activity
+            android:name="poo.parallel.core.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".core.MainActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
     </application>

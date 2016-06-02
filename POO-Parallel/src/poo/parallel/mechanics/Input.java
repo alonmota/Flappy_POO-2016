@@ -37,7 +37,12 @@ public class Input extends SurfaceView implements OnTouchListener {
 
 	@Override
 	public boolean onTouch(View v, MotionEvent event) {
-		character.jump();
+		//character.jump();
+		return false;
+	}
+	
+	public static boolean update() {
+		//character.jump();
 		return false;
 	}
 
