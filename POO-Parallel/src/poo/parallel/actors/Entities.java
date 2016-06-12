@@ -1,5 +1,7 @@
 package poo.parallel.actors;
 
+import android.graphics.Canvas;
+
 /**
  * Secao Actors
  * 
@@ -21,5 +23,11 @@ package poo.parallel.actors;
  */
 
 public interface Entities {
+	
+	public void drawOnThe(Canvas canvas); /* Desenho de entidade na view atual. */
+	
+	public void GetInput();
+			
+	public void CheckUpdate();	
 
 }

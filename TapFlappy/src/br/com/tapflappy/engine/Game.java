@@ -98,9 +98,9 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 			// Character actions
 
 			character.drawOnThe(canvas);
-			// if(character.base + 100 < screen.getHeight()){
+			if(character.base < screen.getHeight()){
 			character.drop();
-			// }
+			 }
 
 			// Obstacle actions
 

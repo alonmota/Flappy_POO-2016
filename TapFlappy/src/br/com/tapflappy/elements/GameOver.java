@@ -12,5 +12,6 @@ public class GameOver {
 		canvas.drawText("Game Over", screen.getWidth() / 5, screen.getHeight() / 2, VERMELHO);
 
 	}
-
+	
 }
+

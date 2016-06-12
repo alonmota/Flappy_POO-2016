@@ -4,7 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import br.com.tapflappy.MainActivity;
+import br.com.tapflappy.main_activity.MainActivity;
+
 import com.br.tapflappy.*;
 
 import android.app.Activity;

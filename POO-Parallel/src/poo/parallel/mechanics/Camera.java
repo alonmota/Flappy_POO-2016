@@ -19,5 +19,7 @@ package poo.parallel.mechanics;
  */
 
 public class Camera {
+	
+	
 
 }

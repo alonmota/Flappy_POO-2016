@@ -1,6 +1,7 @@
 package poo.parallel.mechanics;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.View;
@@ -38,12 +39,15 @@ public class Input extends SurfaceView implements OnTouchListener {
 	@Override
 	public boolean onTouch(View v, MotionEvent event) {
 		//character.jump();
+		Log.d("ERRO", "AMOR");
 		return false;
 	}
 	/**TODO
 	 * implementar character, e o metodo update.
 	 * */
+	
 	public static boolean update() {
+		
 		return false;
 	}
 

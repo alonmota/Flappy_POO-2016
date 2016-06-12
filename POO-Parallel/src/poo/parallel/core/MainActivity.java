@@ -23,7 +23,7 @@ import android.view.View;
 import android.widget.Button;
 
 /**TODO 
- * Criar activity que ira gerenciar o jogo, para poder instanciar ela daqui
+ * Instanciar GameActivity aqui
  * */
 
 public class MainActivity extends Activity {
@@ -42,7 +42,7 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Intent fase1scr = new Intent(MainActivity.this, Game.class);
+				Intent fase1scr = new Intent(MainActivity.this, GameActivity.class);
 				startActivity(fase1scr);
 			};
 		});

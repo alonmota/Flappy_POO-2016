@@ -1,18 +1,15 @@
-package br.com.tapflappy;
+package poo.parallel.core;
 
-import com.br.tapflappy.R;
-
+import poo.parallel.R;
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.FrameLayout;
-import br.com.tapflappy.engine.Game;
+import poo.parallel.core.Game;
 
-public class MainActivity extends Activity {
-
+public class GameActivity extends Activity {
+	
 	private Game game;
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -35,6 +32,6 @@ public class MainActivity extends Activity {
 	protected void onPause() {
 		super.onPause();
 		game.pause();
-		
 	}
+
 }

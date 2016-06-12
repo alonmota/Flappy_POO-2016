@@ -1,5 +1,7 @@
 package poo.parallel.actors;
 
+import android.graphics.Canvas;
+
 /**
  * Secao Actors
  * 
@@ -20,6 +22,26 @@ package poo.parallel.actors;
  * 
  */
 
-public class Actors {
+public class Actors implements Entities {
+	
+	public Actors(){}
+
+	@Override
+	public void drawOnThe(Canvas canvas) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void GetInput() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void CheckUpdate() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

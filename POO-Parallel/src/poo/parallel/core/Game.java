@@ -4,10 +4,16 @@ import java.util.Stack;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.util.Log;
+import android.view.MotionEvent;
+import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import poo.parallel.physics.CollisionChecker;
+//import poo.parallel.physics.CollisionChecker;
 import poo.parallel.core.State;
 import poo.parallel.mechanics.Input;
+import android.view.View;
+import android.view.MotionEvent;
+import android.view.View.OnTouchListener;
 
 /**
  * Secao Core
@@ -27,24 +33,33 @@ import poo.parallel.mechanics.Input;
  * 
  * :O
  * 
- * @author Rafael, Thales
+ * @author Rafael, Thales, Yuri
  * 
  */
 
 
-public class Game extends SurfaceView implements Runnable {
+public class Game extends SurfaceView implements Runnable{
 
-	//public:
+	//private:
 	private Context context;
-	//public	Game(String title, int width, int height){}	//Construtor Padr�o
+	
+	private Input input;
+	
+	//public	Game(String title, int width, int height){}	//Construtor Padrao
 	public	Game(Context context){
 		super(context);
 		this.context = context;
+		//setOnTouchListener(this);
+		input = new Input (context);
+		//camera = new Camera(context);
 		
-	}	//Construtor Padr�o
+		
+	}
+	
+	//Construtor Padrao
 	/*	O construtor fica respons�vel por inicializar TODOS os subsitemas
-	 * 		exigidos pelo programa, e certificar que est�o em pleno funcionamento.
-	 * 		Recebe como par�metro as dimens�es da janela e o nome do execut�vel,
+	 * 		exigidos pelo programa, e certificar que estao em pleno funcionamento.
+	 * 		Recebe como parametro as dimensoes da janela e o nome do executavel,
 	 * 		se for o caso.
 	 * 
 	 *  R: No caso de ser no Android, talvez tenhamos que ver essa questao das dimen-
@@ -52,23 +67,43 @@ public class Game extends SurfaceView implements Runnable {
 	 *  	veis de distintos celulares. Nao sei muito bem como seria isso.
 	 *  
 	 *	Em C++, haveria um destrutor para finalizar os subsistemas e certificar
-	 *		o final da execu��o do jogo. Se vier a ser conveniente, podemos
-	 *		implementar uma fun��o close() que tome conta disso.
+	 *		o final da execucao do jogo. Se vier a ser conveniente, podemos
+	 *		implementar uma funcao close() que tome conta disso.
 	 */
 	private boolean isRunning = true;
+	private SurfaceHolder holder = getHolder();
 	
 	@Override
 	public	void run(){		//Runnable!
 		
+		float lindao = 10;
 		while(isRunning){
+			
+			//Log.d("ERROR", "Massagem");
+			
+			if (!holder .getSurface().isValid())
+				continue;
+			
 			Input.update();
 			
-			State.getState().Update(dt);
-			State.getState().Render();
+			//Camera.draw();
+			
+			//State.getState().Update(lindao);
+			//State.getState().Render();
 			
 		}
 		
-	} 
+	}
+	
+	public void start() {
+		isRunning = true;
+
+	}
+
+	public void pause() {
+		isRunning = false;
+
+	}
 	
 	
 	/*	Run() � o main loop de jogo. Consiste basicamente em:
@@ -133,10 +168,10 @@ public class Game extends SurfaceView implements Runnable {
 	private	void	CalculateDeltaTime(){}
 	private	int		frameStart;
 	private	float	dt;
-	/*	Elementos de temporiza��o: servem basicamente para c�lculos
-	 * 		f�sicos do jogo. dt � calculado no in�cio do loop e
-	 * 		passado como par�metro para a chamada de Update no estado
-	 * 		corrente, que ent�o o passa para o update de todas as entidades
+	/*	Elementos de temporizacao: servem basicamente para calculos
+	 * 		fisicos do jogo. dt eh calculado no inicio do loop e
+	 * 		passado como parametro para a chamada de Update no estado
+	 * 		corrente, que entaoe o passa para o update de todas as entidades
 	 * 		subsequentes.
 	 * 
 	 * 	Por exemplo: suponha que o jogador apertou para a direita:
@@ -206,13 +241,10 @@ public class Game extends SurfaceView implements Runnable {
 	 * 		informa��es em tela. S�o para ser substitu�dos por o que quer
 	 * 		que seja a implementa��o android respectiva
 	 */
-	public void start() {
-		isRunning = true;
-
-	}
-
-	public void pause() {
-		isRunning = false;
-
-	}
+	
+//	@Override
+//	public boolean onTouch(View v, MotionEvent event) {
+//		//character.jump();
+//		return false;
+//	}
 }
