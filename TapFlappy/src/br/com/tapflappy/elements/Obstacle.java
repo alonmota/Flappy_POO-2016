@@ -11,8 +11,8 @@ public class Obstacle {
 	private int inferiorObstacleHeight;
 	private int position;
 	private float superiorObstacleHeight;
-	private static final int OBST_SIZE = 250;
-	private static final int OBST_WIDTH = 100;
+	public static final int OBST_SIZE = 250;
+	static final int OBST_WIDTH = 100;
 	private static final Paint OBST_COLOR = Colors.getColorOfObstacle();
 
 	public Obstacle(Screen screen, int position) {
@@ -51,6 +51,7 @@ public class Obstacle {
 											 que eh o 0) = obstaculo invisivel
 		 								*/
 	}
+	
 
 	public int getPosition() {
 		return position;
@@ -71,3 +72,4 @@ public class Obstacle {
 	}
 
 }
+

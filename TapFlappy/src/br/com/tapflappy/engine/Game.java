@@ -50,7 +50,7 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 		score = new Score();
 		gameover = new GameOver();
 		// obstacle = new Obstacle(screen, 275);
-		obstacles = new Obstacles(screen, score);
+		obstacles = new Obstacles(screen, score, character);
 		// background
 		Bitmap back = BitmapFactory.decodeResource(getResources(), R.drawable.background1);
 		background = Bitmap.createScaledBitmap(back, back.getWidth(), screen.getHeight(), false);

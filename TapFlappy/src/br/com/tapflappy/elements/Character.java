@@ -46,7 +46,7 @@ public class Character {
 
 	public void drawOnThe(Canvas canvas) {
 		//canvas.drawCircle(L_RECT, (float) height, RADIUS, CHAR_COLOR);
-		// canvas.drawRect(L_RECT, height, R_RECT , base, CHAR_COLOR);
+		//canvas.drawRect(L_RECT, (float) height, R_RECT , base, CHAR_COLOR);
 		canvas.drawBitmap(character, X - RADIUS, (float) (height - RADIUS), null);
 	}
 
