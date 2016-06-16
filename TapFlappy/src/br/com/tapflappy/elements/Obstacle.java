@@ -8,9 +8,9 @@ import br.com.tapflappy.graphic.Screen;
 public class Obstacle {
 
 	private Screen screen;
-	private int inferiorObstacleHeight;
+	int inferiorObstacleHeight;
 	private int position;
-	private float superiorObstacleHeight;
+	float superiorObstacleHeight;
 	public static final int OBST_SIZE = 250;
 	static final int OBST_WIDTH = 100;
 	private static final Paint OBST_COLOR = Colors.getColorOfObstacle();
@@ -59,7 +59,7 @@ public class Obstacle {
 
 	public boolean hasHorizontalCollisionWith(Character character) {
 		
-		return this.position < character.L_RECT + character.RADIUS;/*se a posição do personagem + seu raio
+		return this.position < Character.R_RECT;/*se a posição do personagem + seu raio
 		 															for maior que a posição do cano, 
 		 															significa que houve colisão do passaro com a tela
 		 															*/
@@ -67,8 +67,8 @@ public class Obstacle {
 
 	public boolean hasVerticalCollisionWith(Character character) {
 		
-		return character.getHeight() - character.RADIUS < this.superiorObstacleHeight
-				|| character.getHeight() + character.RADIUS > this.inferiorObstacleHeight;
+		return character.height < this.superiorObstacleHeight
+				|| character.base > this.inferiorObstacleHeight;
 	}
 
 }

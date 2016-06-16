@@ -6,8 +6,12 @@ import android.os.SystemClock;
 import android.util.Log;
 import br.com.tapflappy.graphic.Colors;
 import br.com.tapflappy.graphic.Screen;
+import br.com.tapflappy.engine.CollisionChecker;
 import br.com.tapflappy.engine.Sound;
+import br.com.tapflappy.engine.Game;
+
 import com.br.tapflappy.R;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -23,11 +27,12 @@ public class Character {
 	private double time_atual = 0, time_anterior = 0;
 	private double gravity = 450;
 
-	private double height;
+	public float height;
 	public float base;
 	private Screen screen;
 	private Sound sound;
 	private Bitmap character;
+	private Obstacle obstacle;
 	
 
 	private static final Paint CHAR_COLOR = Colors.getColorOfCharacter();
@@ -46,8 +51,8 @@ public class Character {
 
 	public void drawOnThe(Canvas canvas) {
 		//canvas.drawCircle(L_RECT, (float) height, RADIUS, CHAR_COLOR);
-		//canvas.drawRect(L_RECT, (float) height, R_RECT , base, CHAR_COLOR);
-		canvas.drawBitmap(character, X - RADIUS, (float) (height - RADIUS), null);
+		canvas.drawRect(L_RECT, height, R_RECT , base, CHAR_COLOR);
+		//canvas.drawBitmap(character, X - RADIUS, (float) (height - RADIUS), null);
 	}
 
 	public void drop() {
@@ -71,7 +76,9 @@ public class Character {
 
 			time = time_atual - time_anterior;
 
-			height = (height + (velocidade_inicial * time) + ((3 * gravity * time * time) / 2));
+			height = (float) (height + (velocidade_inicial * time) + ((3 * gravity * time * time) / 2));
+			base = (float) (height + 50);
+			
 			Log.d("dq", "height -   " + height);
 			velocidade_inicial += (3 * gravity * time);
 
@@ -82,6 +89,15 @@ public class Character {
 	}
 
 	public void jump() {
+		
+		/*if (new CollisionChecker(character, obstacles).hasCollision()) {
+			sound.play(Sound.COLLIDE);
+			gameover.drawOnThe(canvas, screen);
+			isRunning = false;
+			continue; 
+			/** TODO Pensar a respeito dessa colisao 
+		} */
+		
 		// if (height > 0) {
 
 		for (int i = 0; i < 5; i++) {
@@ -92,7 +108,10 @@ public class Character {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
 			height -= 35;
+			base -= 35;
+			
 		}
 
 		velocidade_inicial = 0;
@@ -100,7 +119,5 @@ public class Character {
 		// PULO é static, portanto acessado através diretamente da classe
 	}
 
-	public double getHeight() {
-		return this.height;
-	}
+
 }

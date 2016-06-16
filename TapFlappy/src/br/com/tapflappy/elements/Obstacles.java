@@ -53,7 +53,7 @@ public class Obstacles {
 				iterator.add(auxObstacle);
 			}
 			if(obstacle.getPosition() + obstacle.OBST_WIDTH == character.R_RECT){
-				score.aumenta(); //aumenta a pontuação quando o personagem "entra" no cano
+				score.aumenta(); //aumenta a pontuação quando o personagem passa pelo cano
 			}
 		}
 	}

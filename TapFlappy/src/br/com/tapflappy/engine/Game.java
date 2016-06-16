@@ -20,7 +20,7 @@ import android.view.View;
 
 public class Game extends SurfaceView implements Runnable, OnTouchListener {
 
-	private boolean isRunning = true;
+	public boolean isRunning = true;
 	private SurfaceHolder holder = getHolder();
 	private Character character;
 	private Bitmap background;
@@ -35,6 +35,7 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 	private int variante1;
 	private int variante2;
 	private Context context;
+	private Canvas canvas; /** TODO Verificar isso aqui */
 
 	public Game(Context context) {
 		super(context);
@@ -101,8 +102,8 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 
 			character.drawOnThe(canvas);
 			if(character.base < screen.getHeight()){
-			character.drop();
-			 }
+				character.drop();
+			}
 
 			// Obstacle actions
 

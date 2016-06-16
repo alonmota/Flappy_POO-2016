@@ -9,7 +9,7 @@ public class GameOver {
 	private static final Paint VERMELHO = Colors.getColorOfGameOver();
 
 	public void drawOnThe(Canvas canvas, Screen screen) {
-		canvas.drawText("Game Over", screen.getWidth() / 5, screen.getHeight() / 2, VERMELHO);
+		canvas.drawText("Game Over", screen.getWidth() / 10, screen.getHeight() / 2, VERMELHO);
 
 	}
 	
