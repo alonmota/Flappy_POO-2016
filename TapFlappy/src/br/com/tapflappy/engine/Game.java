@@ -43,6 +43,8 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 		sound = new Sound(context);
 		setElements();
 		setOnTouchListener(this);
+		
+		sound.music(Sound.MUSIC_GAME);
 	}
 
 	private void setElements() {
@@ -117,6 +119,7 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 			score.drawOnThe(canvas);
 
 			if (new CollisionChecker(character, obstacles).hasCollision()) {
+				sound.play(Sound.COLLIDE);
 				gameover.drawOnThe(canvas, screen);
 				isRunning = false;
 			}
