@@ -6,13 +6,17 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View.OnTouchListener;
+import br.com.tapflappy.elements.Background;
 import br.com.tapflappy.elements.Character;
 import br.com.tapflappy.elements.GameOver;
+import br.com.tapflappy.elements.Item;
 import br.com.tapflappy.elements.Obstacle;
 import br.com.tapflappy.elements.Obstacles;
 import br.com.tapflappy.elements.Score;
+import br.com.tapflappy.graphic.Assets;
 import br.com.tapflappy.graphic.Screen;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -23,47 +27,66 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 	public boolean isRunning = true;
 	private SurfaceHolder holder = getHolder();
 	private Character character;
-	private Bitmap background;
+	private Background background;
+	// private Bitmap backgroundAux;
 	private Screen screen;
 	private Score score;
 	private Sound sound;
 	// private Obstacle obstacle;
 	private Obstacles obstacles;
 	private GameOver gameover;
-	private Bitmap background2;
 	private int alternador;
-	private int variante1;
-	private int variante2;
+	// private int variante1;
+	// private int variante2;
 	private Context context;
 	private Canvas canvas; /** TODO Verificar isso aqui */
-
+	private Item item;
+	private int collisionResult;
+	private int new_environment;
+	private static int current_environment;
+	
+	
 	public Game(Context context) {
 		super(context);
 		this.context = context;
 		screen = new Screen(context);
 		sound = new Sound(context);
 		setElements();
+		
 		setOnTouchListener(this);
 		
 		sound.music(Sound.MUSIC_GAME);
 	}
 
 	private void setElements() {
+		
+		//Pre-Loading Assets
+		Assets.loadAssets(context);
+		
+		current_environment = 0;
+		
+		item = new Item(context,1600,400);
+		
 		character = new Character(screen, sound, context);
 		score = new Score();
 		gameover = new GameOver();
-		// obstacle = new Obstacle(screen, 275);
-		obstacles = new Obstacles(screen, score, character);
-		// background
-		Bitmap back = BitmapFactory.decodeResource(getResources(), R.drawable.background1);
-		background = Bitmap.createScaledBitmap(back, back.getWidth(), screen.getHeight(), false);
-		// background auxiliar
-		Bitmap back2 = BitmapFactory.decodeResource(getResources(), R.drawable.background2);
-		background2 = Bitmap.createScaledBitmap(back2, back.getWidth(), screen.getHeight(), false);
 		
-		alternador = 1;
-		variante1 = 0;
-		variante2 = 0;
+		// background
+		background = new Background(context, screen);
+		//Bitmap back1 = BitmapFactory.decodeResource(getResources(), R.drawable.background1);
+		//background = Bitmap.createScaledBitmap(back1, back1.getWidth(), screen.getHeight(), false);
+		
+		// background auxiliar
+		//backgroundAux = Background.generateAuxiliar(context, screen);;
+		//Bitmap back2 = BitmapFactory.decodeResource(getResources(), R.drawable.background2);
+		//backgroundAux = Bitmap.createScaledBitmap(back2, back2.getWidth(), screen.getHeight(), false);
+				
+		// obstacle = new Obstacle(screen, 275);
+		obstacles = new Obstacles(context,screen, score, character);
+				
+		//alternador = 1;
+		//variante1 = 0;
+		//variante2 = 0;
 
 	}
 
@@ -75,6 +98,7 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 
 			Canvas canvas = holder.lockCanvas();
 			// canvas.drawBitmap(background, 0, 0, null);
+			/*
 			if (variante1 <= -1735 + screen.getWidth()) {
 				variante1 = 0;
 				alternador = 2;
@@ -93,13 +117,20 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 				break;
 
 			case 2:
-				canvas.drawBitmap(background2, variante2, 0, null);
+				canvas.drawBitmap(backgroundAux, variante2, 0, null);
 				variante2--;
 				break;
 			}
+			*/
+			background.drawOnThe(canvas);
+			background.move();
+			
+			// Item Actions
+			item.drawOnThe(canvas);
+			item.move();
 
 			// Character actions
-
+			character.charAnim.tick();
 			character.drawOnThe(canvas);
 			if(character.base < screen.getHeight()){
 				character.drop();
@@ -110,6 +141,7 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 			/*
 			 * obstacle.drawOnThe(canvas); obstacle.move();
 			 */
+			
 			obstacles.drawOnThe(canvas);
 			obstacles.move();
 
@@ -118,11 +150,29 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 			// sobreposto por eles
 			// as camadas são desenhadas na ordem do código
 			score.drawOnThe(canvas);
-
-			if (new CollisionChecker(character, obstacles).hasCollision()) {
-				sound.play(Sound.COLLIDE);
-				gameover.drawOnThe(canvas, screen);
-				isRunning = false;
+			
+			//canvas.drawRect(character.L_RECT , character.height, character.R_RECT , character.height + character.RADIUS, character.getCharColor());
+			
+			collisionResult = new CollisionChecker(character, item, obstacles).hasCollision();
+			//Log.d("Giz", "Tem tijolo de contrução "+collisionResult);
+			//Log.d("Eduardo", "e Monica "+current_environment);
+			if (collisionResult != 0) {
+				switch(collisionResult){
+				
+				case 1:
+					sound.play(Sound.COLLIDE);
+					gameover.drawOnThe(canvas, screen);
+					isRunning = false;
+					break;
+					
+				case 2:
+					//item.Animation
+					new_environment = (int) (Math.random() * 3);
+					while(new_environment == current_environment)
+						new_environment = (int) (Math.random() * 3);
+					current_environment = new_environment;
+					break;
+				}
 			}
 
 			holder.unlockCanvasAndPost(canvas);
@@ -146,6 +196,14 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 		character.jump();
 		return false;
 
+	}
+
+	public static int getCurrent_environment() {
+		return current_environment;
+	}
+
+	public void setCurrent_environment(int current_environment) {
+		this.current_environment = current_environment;
 	}
 
 }

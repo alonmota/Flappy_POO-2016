@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
+import android.content.Context;
 import android.graphics.Canvas;
+import android.util.Log;
 import br.com.tapflappy.graphic.Screen;
 
 public class Obstacles {
@@ -17,17 +19,18 @@ public class Obstacles {
 	
 	private Screen screen;
 	private Score score;
+	private Context context;
 
-	public Obstacles(Screen screen, Score score, Character charac) {
+	public Obstacles(Context context, Screen screen, Score score, Character charac) {
 		this.screen = screen;
-		int position = 275;
+		int position = 200; // 275 antes
 		this.score = score;
 		
 		this.character = charac;
 		
 		for (int i = 0; i < NUM_OF_OBST; i++) {
 			position += OBST_DIST;
-			Obstacle obstacle = new Obstacle(screen, position);
+			Obstacle obstacle = new Obstacle(context, screen, position);
 			obstacles.add(obstacle);
 		}
 		
@@ -37,7 +40,6 @@ public class Obstacles {
 		for (Obstacle obstacle : obstacles) {
 			obstacle.drawOnThe(canvas);
 		}
-		
 	}
 
 	public void move() {
@@ -45,14 +47,16 @@ public class Obstacles {
 		while(iterator.hasNext()){
 			Obstacle obstacle = iterator.next();
 			obstacle.move();
+			//Log.d("Saindo", "\n\n\nVai sair a qualquer momento da tela\n\n\n");
 			if(obstacle.outOfBounds()){
-				/*score.aumenta();*/ //aumenta a pontuação quando o cano passa sai da tela
-				// gerar novo obstaculo e apagar antigo
+				/*score.aumenta();*/ // aumenta a pontuação quando o obstaculo sai da tela
+				// gerar novo obstaculo e apagar antigo			
 				iterator.remove();
-				Obstacle auxObstacle = new Obstacle(screen, getMaxPos() + OBST_DIST);
+				//Log.d("Saiu", "\n\n\nSaiu da tela\n\n\n");
+				Obstacle auxObstacle = new Obstacle(context, screen, getMaxPos() + OBST_DIST);
 				iterator.add(auxObstacle);
 			}
-			if(obstacle.getPosition() + obstacle.OBST_WIDTH == character.R_RECT){
+			if((obstacle.getPosition() + obstacle.OBST_WIDTH) == character.R_RECT){
 				score.aumenta(); //aumenta a pontuação quando o personagem passa pelo cano
 			}
 		}
@@ -68,8 +72,7 @@ public class Obstacles {
 
 	public boolean hasCollisionWith(Character character) {
 		for(Obstacle obstacle : obstacles) {
-			if(obstacle.hasHorizontalCollisionWith(character) 
-					&& obstacle.hasVerticalCollisionWith(character)){
+			if(obstacle.hasCollisionWith(character)){
 				return true;
 			}
 		}
