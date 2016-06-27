@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import br.com.tapflappy.graphic.Animations;
 import br.com.tapflappy.graphic.Assets;
 import br.com.tapflappy.graphic.Colors;
 import br.com.tapflappy.graphic.Screen;
@@ -21,30 +22,45 @@ public class Item extends Element{
 	
 	private Bitmap itemImg;
 
+	public Animations itemAnim;
+	
 	
 	public Item(Context context, int xPos, int yPos) {
 		
 		this.xPos = xPos;
 		this.yPos = yPos;
 		this.context = context;
-	
-		Bitmap bp = Assets.bmpItem;
 		
-		this.itemImg = Bitmap.createScaledBitmap(bp, (int)ITEM_WIDTH, (int)ITEM_SIZE, false);
+		
+		itemAnim = new Animations(250, Assets.bmpItem);
+		
+		//this.itemImg = Bitmap.createScaledBitmap(bp, (int)ITEM_WIDTH, (int)ITEM_SIZE, false);
 		
 		}
 
 	
 	public void drawOnThe(Canvas canvas) {
 		drawItemOnThe(canvas);
+		
 	}
 
 
 	private void drawItemOnThe(Canvas canvas) {
-		canvas.drawBitmap(itemImg, xPos, (float) yPos, null);
+		
+		//Drawing Item
+		canvas.drawBitmap(Bitmap.createScaledBitmap(itemAnim.getCurrentFrame(), 
+							(int)ITEM_WIDTH, 
+							(int)ITEM_SIZE, 
+							false)
+								, xPos, (float) yPos, null);
+		
+		
+		
 	}
 	
 	public void move() {
+		
+
 		this.xPos -= 5;
 		
 		this.yPos += 5 * crazy;
@@ -77,10 +93,25 @@ public class Item extends Element{
 		
 			if(this.hasHorizontalCollisionWith(character) 
 					&& this.hasVerticalCollisionWith(character)){
+				
+
 				xPos += 1500;
 				return true;
 			}
 		
 		return false;
 	}
+
+
+	public int getxPos() {
+		return xPos;
+	}
+
+
+	public int getyPos() {
+		return yPos;
+	}
+	
+	
 }
+

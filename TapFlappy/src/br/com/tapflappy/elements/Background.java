@@ -49,7 +49,7 @@ public class Background {
 	
 	public void move(){
 		
-		if (variante <= -1000 + screen.getWidth()) {
+		if (variante <= -1000+ screen.getWidth() ) { //screen.getWidth()
 			variante = 0;
 			this.alternador = this.alternador*(-1);
 

@@ -16,6 +16,7 @@ import br.com.tapflappy.elements.Item;
 import br.com.tapflappy.elements.Obstacle;
 import br.com.tapflappy.elements.Obstacles;
 import br.com.tapflappy.elements.Score;
+import br.com.tapflappy.graphic.Animations;
 import br.com.tapflappy.graphic.Assets;
 import br.com.tapflappy.graphic.Screen;
 import android.view.SurfaceHolder;
@@ -45,6 +46,11 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 	private int new_environment;
 	private static int current_environment;
 	
+	public Animations effect;
+	
+	public boolean effectRunning;
+	public int effectXpos, effectYpos;
+	
 	
 	public Game(Context context) {
 		super(context);
@@ -71,6 +77,8 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 		score = new Score();
 		gameover = new GameOver();
 		
+		effect = new Animations(50, Assets.bmpEffect);
+		effectRunning = false;
 		// background
 		background = new Background(context, screen);
 		//Bitmap back1 = BitmapFactory.decodeResource(getResources(), R.drawable.background1);
@@ -92,6 +100,9 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 
 	@Override
 	public void run() {
+		
+		int counter = 0;
+		
 		while (isRunning) {
 			if (!holder.getSurface().isValid())
 				continue;
@@ -125,10 +136,15 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 			background.drawOnThe(canvas);
 			background.move();
 			
-			// Item Actions
+			// Item Actions		
+			item.itemAnim.tick();
+			
+			item.itemAnim.tick();
+			
 			item.drawOnThe(canvas);
 			item.move();
 
+			
 			// Character actions
 			character.charAnim.tick();
 			character.drawOnThe(canvas);
@@ -144,7 +160,21 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 			
 			obstacles.drawOnThe(canvas);
 			obstacles.move();
-
+			
+			//Effect Actions
+			if(effectRunning){
+				Log.d("effect", "effect true");
+				effect.tick();
+				effect.drawOnThe(canvas, effectXpos, effectYpos);
+				
+				//counter++;
+				
+				if(effect.getIndex() >=5  ){
+					effectRunning = false;
+					effect.setIndex(0);
+					counter = 0;
+					}
+				}
 			// Score actions
 			// Score é desenhada depois dos canos pra ficar em cima deles, e não
 			// sobreposto por eles
@@ -160,13 +190,18 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 				switch(collisionResult){
 				
 				case 1:
-					sound.play(Sound.COLLIDE);
-					gameover.drawOnThe(canvas, screen);
-					isRunning = false;
+			//		sound.play(Sound.COLLIDE);
+				//	gameover.drawOnThe(canvas, screen);
+					//isRunning = false;
 					break;
 					
 				case 2:
 					//item.Animation
+					effectRunning = true;
+					
+					effectXpos = (int) character.L_RECT;
+					effectYpos = (int) character.height;
+					
 					new_environment = (int) (Math.random() * 3);
 					while(new_environment == current_environment)
 						new_environment = (int) (Math.random() * 3);

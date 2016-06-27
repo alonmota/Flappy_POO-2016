@@ -13,7 +13,8 @@ public class Assets {
 
 	public static Bitmap bmpChar[] = new Bitmap [10];
 	
-	public static Bitmap bmpItem;
+	public static Bitmap bmpItem[] = new Bitmap[3];
+	public static Bitmap bmpEffect[] = new Bitmap[6];
 	public Context context;
 
 	
@@ -54,7 +55,16 @@ public class Assets {
 		bmpChar[8] = BitmapFactory.decodeResource(context.getResources(), R.drawable.i);
 		bmpChar[9] = BitmapFactory.decodeResource(context.getResources(), R.drawable.j);
 		
-		bmpItem =  BitmapFactory.decodeResource(context.getResources(), R.drawable.diamanteamarelo);
+		bmpItem[0] =  BitmapFactory.decodeResource(context.getResources(), R.drawable.d1);
+		bmpItem[1] =  BitmapFactory.decodeResource(context.getResources(), R.drawable.d2);
+		bmpItem[2] =  BitmapFactory.decodeResource(context.getResources(), R.drawable.d3);
+		
+		bmpEffect[0] =  BitmapFactory.decodeResource(context.getResources(), R.drawable.e1);
+		bmpEffect[1] =  BitmapFactory.decodeResource(context.getResources(), R.drawable.e2);
+		bmpEffect[2] =  BitmapFactory.decodeResource(context.getResources(), R.drawable.e3);
+		bmpEffect[3] =  BitmapFactory.decodeResource(context.getResources(), R.drawable.e4);
+		bmpEffect[4] =  BitmapFactory.decodeResource(context.getResources(), R.drawable.e5);
+		bmpEffect[5] =  BitmapFactory.decodeResource(context.getResources(), R.drawable.e6);
 	}
 	
 }
