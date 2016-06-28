@@ -67,15 +67,15 @@ public class Character {
 	}
 
 	public void drawOnThe(Canvas canvas) {
-		//canvas.drawCircle(L_RECT, (float) height, RADIUS, CHAR_COLOR);
+		//canvas.drawCircle(L_RECT, (float) height, RADIUS, CHAR_COLOR); CIRCULO VERIFICADOR
 		//canvas.drawRect(L_RECT, height, R_RECT , base, CHAR_COLOR);
 		
 		canvas.drawBitmap(Bitmap.createScaledBitmap(charAnim.getCurrentFrame(),
 							(int)RADIUS*2,
 							(int)RADIUS*2,
 							false), 
-						  L_RECT, 
-						  (float) (height), 
+						  L_RECT-RADIUS, 
+						  (float) (height-RADIUS), 
 						  null);
 	}
 

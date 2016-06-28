@@ -92,7 +92,7 @@ public class Obstacle extends Element {
 
 	public boolean hasHorizontalCollisionWith(Character character) {
 		
-		return this.xPos < Character.R_RECT;/*se a posição do personagem + seu raio
+		return this.xPos < character.L_RECT+character.RADIUS;/*se a posição do personagem + seu raio
 		 															for maior que a posição do cano, 
 		 															significa que houve colisão do passaro com a tela
 		 															*/
@@ -100,8 +100,8 @@ public class Obstacle extends Element {
 
 	public boolean hasVerticalCollisionWith(Character character) {
 		
-		return character.height < this.superiorObstacleHeight
-				|| character.height+character.RADIUS > this.inferiorObstacleHeight;
+		return (character.height - character.RADIUS < this.superiorObstacleHeight && character.L_RECT - character.RADIUS < this.xPos + OBST_WIDTH)
+				|| (character.height + character.RADIUS> this.inferiorObstacleHeight && character.L_RECT - character.RADIUS < this.xPos + OBST_WIDTH);
 	}
 
 	@Override

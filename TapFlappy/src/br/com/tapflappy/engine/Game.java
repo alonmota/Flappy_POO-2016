@@ -197,16 +197,10 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 				switch(collisionResult){
 				
 				case 1:
-<<<<<<< HEAD
 					sound.play(Sound.COLLIDE);
 					sound.stop_music();
 					gameover.drawOnThe(canvas, screen);
 					isRunning = false;
-=======
-					//sound.play(Sound.COLLIDE);
-				//	gameover.drawOnThe(canvas, screen);
-					//isRunning = false;
->>>>>>> origin/master
 					break;
 					
 				case 2:
@@ -244,7 +238,16 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 
 	@Override
 	public boolean onTouch(View v, MotionEvent event) {
-		character.jump();
+		
+		for(int i=0;i<5; i++){
+			collisionResult = new CollisionChecker(character, item, obstacles).hasCollision();
+		
+			if(collisionResult == 1){
+				return false;
+			}
+				
+			character.jump();
+		}
 		return false;
 
 	}

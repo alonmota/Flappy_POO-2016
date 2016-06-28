@@ -11,13 +11,6 @@ public class Sound{
 	//Constructor
 	public Sound(Context context){
 		pool = new SoundPool(3, AudioManager.STREAM_MUSIC, 0);
-<<<<<<< HEAD
-=======
-		music = MediaPlayer.create(context, R.raw.music_forest);
-		
-		music.setLooping(true);
-		music.start();
->>>>>>> origin/master
 		
 		//Definição de Assets
 		JUMP 			= pool.load(context, R.raw.sfx_jump, 		1);
