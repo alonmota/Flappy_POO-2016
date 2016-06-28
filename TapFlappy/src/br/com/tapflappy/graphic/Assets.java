@@ -15,6 +15,7 @@ public class Assets {
 	
 	public static Bitmap bmpItem[] = new Bitmap[3];
 	public static Bitmap bmpEffect[] = new Bitmap[6];
+	public static Bitmap bmpCoins, bmpExplosion;
 	public Context context;
 
 	
@@ -65,6 +66,10 @@ public class Assets {
 		bmpEffect[3] =  BitmapFactory.decodeResource(context.getResources(), R.drawable.e4);
 		bmpEffect[4] =  BitmapFactory.decodeResource(context.getResources(), R.drawable.e5);
 		bmpEffect[5] =  BitmapFactory.decodeResource(context.getResources(), R.drawable.e6);
+		
+		bmpExplosion = BitmapFactory.decodeResource(context.getResources(), R.drawable.explosion);
+		
+		bmpCoins = BitmapFactory.decodeResource(context.getResources(), R.drawable.coins);
 	}
 	
 }

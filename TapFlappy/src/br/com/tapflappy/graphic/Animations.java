@@ -8,6 +8,8 @@ import android.util.Log;
 public class Animations {
 
 	
+	
+	private Bitmap originalFrames; // !!
 	public Bitmap frames[];
 	public int speed, index;
 	private double lastTime, timer;
@@ -18,6 +20,19 @@ public class Animations {
 		this.frames = frames;
 		
 		this.len = frames.length;
+		
+		index = 0;
+		timer = 0;
+		lastTime = SystemClock.uptimeMillis() ;
+	}
+	
+	public Animations(int speed, Bitmap original_frame,int nFrames, int dist, int height){
+		this.speed = speed;
+		this.frames = generateSubFrames(original_frame, nFrames,dist,height);
+		
+		this.len = frames.length;
+		
+		
 		
 		index = 0;
 		timer = 0;
@@ -55,14 +70,23 @@ public class Animations {
 		this.index = index;
 	}
 
-	public void drawOnThe(Canvas canvas, int x, int y){
+	public void drawOnThe(Canvas canvas, int x, int y, int xSize, int ySize){
 		canvas.drawBitmap(Bitmap.createScaledBitmap(this.getCurrentFrame(), 
-				 (int)100, 
-				 (int)100, 
+				 (int)xSize, 
+				 (int)ySize, 
 				 false)
 				 , x, 
 				 (float) y, 
 				 null);
 	}
-	
+	public Bitmap[] generateSubFrames(Bitmap src, int nFrames, int dist, int height){
+		
+		Bitmap newFrames[] = new Bitmap[nFrames];
+		
+		for(int i = 0; i < nFrames; i++)
+			newFrames[i] = Bitmap.createBitmap(src, i*dist, 0, dist, height);
+		
+		return newFrames;
+		
+	}
 }

@@ -12,6 +12,8 @@ public class Sound{
 	public Sound(Context context){
 		pool = new SoundPool(3, AudioManager.STREAM_MUSIC, 0);
 		music = MediaPlayer.create(context, R.raw.music_forest);
+		
+		music.setLooping(true);
 		music.start();
 		
 		
