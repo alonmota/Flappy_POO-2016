@@ -46,7 +46,7 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 	private int new_environment;
 	private static int current_environment;
 	
-	public Animations effect;
+	public Animations effect, coin;
 	
 	public boolean effectRunning;
 	public int effectXpos, effectYpos;
@@ -66,6 +66,7 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 
 	private void setElements() {
 		
+		
 		//Pre-Loading Assets
 		Assets.loadAssets(context);
 		
@@ -77,7 +78,9 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 		score = new Score();
 		gameover = new GameOver();
 		
-		effect = new Animations(50, Assets.bmpEffect);
+		
+		coin = new Animations(50, Assets.bmpCoins, 10,44,40);
+		effect = new Animations(50, Assets.bmpExplosion, 6,75,104);
 		effectRunning = false;
 		// background
 		background = new Background(context, screen);
@@ -145,6 +148,10 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 			item.move();
 
 			
+			//Coins Tests Animacao
+			coin.tick();
+			coin.drawOnThe(canvas, 400, 200, 50 ,50);
+			
 			// Character actions
 			character.charAnim.tick();
 			character.drawOnThe(canvas);
@@ -165,7 +172,7 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 			if(effectRunning){
 				Log.d("effect", "effect true");
 				effect.tick();
-				effect.drawOnThe(canvas, effectXpos, effectYpos);
+				effect.drawOnThe(canvas, effectXpos, effectYpos, 125, 125);
 				
 				//counter++;
 				
@@ -190,10 +197,16 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 				switch(collisionResult){
 				
 				case 1:
+<<<<<<< HEAD
 					sound.play(Sound.COLLIDE);
 					sound.stop_music();
 					gameover.drawOnThe(canvas, screen);
 					isRunning = false;
+=======
+					//sound.play(Sound.COLLIDE);
+				//	gameover.drawOnThe(canvas, screen);
+					//isRunning = false;
+>>>>>>> origin/master
 					break;
 					
 				case 2:
