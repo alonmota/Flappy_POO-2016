@@ -61,7 +61,7 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 		
 		setOnTouchListener(this);
 		
-		//sound.play(Sound.MUSIC_FOREST);
+		sound.start_music();
 	}
 
 	private void setElements() {
@@ -191,8 +191,9 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 				
 				case 1:
 					sound.play(Sound.COLLIDE);
-				//	gameover.drawOnThe(canvas, screen);
-					//isRunning = false;
+					sound.stop_music();
+					gameover.drawOnThe(canvas, screen);
+					isRunning = false;
 					break;
 					
 				case 2:
@@ -207,6 +208,8 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 					while(new_environment == current_environment)
 						new_environment = (int) (Math.random() * 3);
 					current_environment = new_environment;
+					
+					sound.set_music(current_environment);
 					break;
 				}
 			}

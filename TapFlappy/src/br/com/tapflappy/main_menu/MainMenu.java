@@ -1,5 +1,6 @@
 package br.com.tapflappy.main_menu;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,23 +14,15 @@ import android.app.Activity;
 
 public class MainMenu extends Activity {
 
-	private Button playButon;
-	private Button quitButton;
-
-	/*private Sound sound
-	 * 
-		Não dá pra inicializar sound sem um context
-		Ou seja, se main menu não tiver um context,
-			também não vai ter som / música :(
-		Se forem colocar um context aqui pra resolver isso,
-		podem passar a sound pra inicialização de game,
-		ao invés de instanciar um novo objeto sound
-	*/
+	private Button 	playButon;
+	private Button 	quitButton;
+	private Sound	sound;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.screen_menu);
+        sound = new Sound(this);
         
         playButon = (Button) findViewById(R.id.PLAY);
         quitButton = (Button) findViewById(R.id.QUIT);
@@ -39,8 +32,8 @@ public class MainMenu extends Activity {
 			@Override
 			public void onClick(View v) {
 				//sound.stop_music();
-				//sound.play(Sound.BUTTONPRESS);
-				//sound.play(Sound.NEWGAME);
+				sound.play(Sound.BUTTONPRESS);
+				sound.play(Sound.NEWGAME);
 				
 				Intent fase1scr = new Intent(MainMenu.this/*v.getContext()getApplicationContext()*/, MainActivity.class);
 				startActivity(fase1scr);
@@ -53,7 +46,8 @@ public class MainMenu extends Activity {
 			public void onClick(View v) {
 				
 				/* Aqui sai do jogo; */
-				//sound.play(Sound.ENDGAME);
+				sound.play(Sound.BUTTONPRESS);
+				sound.play(Sound.ENDGAME);
 				
 				Intent intent = new Intent(Intent.ACTION_MAIN);
 				intent.addCategory(Intent.CATEGORY_HOME);

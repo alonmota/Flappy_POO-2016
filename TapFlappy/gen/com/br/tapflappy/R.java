@@ -78,17 +78,15 @@ public final class R {
         public static final int screen_menu=0x7f030001;
     }
     public static final class raw {
-        public static final int buttonpress=0x7f040000;
-        public static final int endgame=0x7f040001;
-        public static final int explosion=0x7f040002;
-        public static final int jump=0x7f040003;
-        public static final int jump_test=0x7f040004;
-        public static final int music_city=0x7f040005;
-        public static final int music_forest=0x7f040006;
-        public static final int music_game=0x7f040007;
-        public static final int newgame=0x7f040008;
-        public static final int sfx_item_get=0x7f040009;
-        public static final int sfx_jump=0x7f04000a;
+        public static final int music_city=0x7f040000;
+        public static final int music_forest=0x7f040001;
+        public static final int music_game=0x7f040002;
+        public static final int sfx_buttonpress=0x7f040003;
+        public static final int sfx_endgame=0x7f040004;
+        public static final int sfx_explosion=0x7f040005;
+        public static final int sfx_item_get=0x7f040006;
+        public static final int sfx_jump=0x7f040007;
+        public static final int sfx_newgame=0x7f040008;
     }
     public static final class string {
         public static final int app_name=0x7f050000;
