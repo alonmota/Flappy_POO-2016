@@ -11,6 +11,7 @@ import android.view.MotionEvent;
 import android.view.View.OnTouchListener;
 import br.com.tapflappy.elements.Background;
 import br.com.tapflappy.elements.Character;
+import br.com.tapflappy.elements.Coins;
 import br.com.tapflappy.elements.GameOver;
 import br.com.tapflappy.elements.Item;
 import br.com.tapflappy.elements.Obstacle;
@@ -50,6 +51,7 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 	
 	public boolean effectRunning;
 	public int effectXpos, effectYpos;
+	private Coins coins;
 	
 	
 	public Game(Context context) {
@@ -94,6 +96,7 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 				
 		// obstacle = new Obstacle(screen, 275);
 		obstacles = new Obstacles(context,screen, score, character);
+		coins = new Coins(context, screen, score, character);
 				
 		//alternador = 1;
 		//variante1 = 0;
@@ -167,6 +170,10 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 			
 			obstacles.drawOnThe(canvas);
 			obstacles.move();
+			
+			coins.drawOnThe(canvas);
+			coins.move();
+			
 			
 			//Effect Actions
 			if(effectRunning){

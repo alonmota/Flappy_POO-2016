@@ -136,7 +136,7 @@ public class Character {
 				e.printStackTrace();
 			}
 			
-			height -= 15;
+			height -= 3;
 			base -= 35;
 			
 		}
