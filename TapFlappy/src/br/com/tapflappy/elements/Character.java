@@ -142,7 +142,7 @@ public class Character {
 		}
 
 		velocidade_inicial = 0;
-		sound.play(Sound.PULO);
+		sound.play(Sound.JUMP);
 		// PULO é static, portanto acessado através diretamente da classe
 	}
 
