@@ -82,7 +82,7 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 		
 		
 		coin = new Animations(50, Assets.bmpCoins, 10,44,40);
-		effect = new Animations(50, Assets.bmpExplosion, 6,75,104);
+		effect = new Animations(50, Assets.bmpExplosion, 6,73,119);
 		effectRunning = false;
 		// background
 		background = new Background(context, screen);
@@ -178,7 +178,7 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 			if(effectRunning){
 				Log.d("effect", "effect true");
 				effect.tick();
-				effect.drawOnThe(canvas, effectXpos, effectYpos, 125, 125);
+				effect.drawOnThe(canvas,(int) (character.L_RECT-character.RADIUS)-30,(int) (character.height-character.RADIUS)-30, 125, 125);
 				
 				//counter++;
 				
@@ -203,10 +203,10 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 				switch(collisionResult){
 				
 				case 1:
-					sound.play(Sound.COLLIDE);
-					sound.stop_music();
-					gameover.drawOnThe(canvas, screen);
-					isRunning = false;
+					//sound.play(Sound.COLLIDE);
+					//sound.stop_music();
+					//gameover.drawOnThe(canvas, screen);
+					//isRunning = false;
 					break;
 					
 				case 2:

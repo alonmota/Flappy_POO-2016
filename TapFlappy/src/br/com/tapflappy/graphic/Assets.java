@@ -67,7 +67,7 @@ public class Assets {
 		bmpEffect[4] =  BitmapFactory.decodeResource(context.getResources(), R.drawable.e5);
 		bmpEffect[5] =  BitmapFactory.decodeResource(context.getResources(), R.drawable.e6);
 		
-		bmpExplosion = BitmapFactory.decodeResource(context.getResources(), R.drawable.explosion);
+		bmpExplosion = BitmapFactory.decodeResource(context.getResources(), R.drawable.gfxgreen);
 		
 		bmpCoins = BitmapFactory.decodeResource(context.getResources(), R.drawable.coins);
 	}
