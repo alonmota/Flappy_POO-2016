@@ -24,6 +24,7 @@ public class Character {
 	public static final float L_RECT = 110;
 	public static final float R_RECT = 190;
 	public static final float RADIUS = 50;
+	public static final float cRADIUS = 40;
 	public double time = 0;
 	public double velocidade_inicial;
 	private double time_atual = 0, time_anterior = 0;
@@ -93,7 +94,7 @@ public class Character {
 public void setNewPosition(){
 		
 		float newHeight;
-		Log.d("Yes", "Coefa, coefb: "+coefA+"  "+coefB);
+		//Log.d("Yes", "Coefa, coefb: "+coefA+"  "+coefB);
 		if (time_anterior == 0) {
 			
 			time_atual = SystemClock.uptimeMillis() * 0.001f;

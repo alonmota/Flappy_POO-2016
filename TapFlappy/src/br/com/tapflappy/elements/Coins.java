@@ -7,6 +7,10 @@ import java.util.Random;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import br.com.tapflappy.engine.Game;
+import br.com.tapflappy.engine.Sound;
+import br.com.tapflappy.graphic.Colors;
 import br.com.tapflappy.graphic.Screen;
 
 public class Coins {
@@ -14,17 +18,18 @@ public class Coins {
 	private static final int COINS_DIST = 700 ;
 	private Character character;
 	
-	private final List<Coin> coins = new ArrayList<Coin>();
+	public final List<Coin> coins = new ArrayList<Coin>();
 	
 	private Screen screen;
 	private Score score;
 	private Context context;
 	private Random random = new Random();
 	private float height;
-
+	public int counter = 0;
+	
 	public Coins(Context context, Screen screen, Score score, Character charac) {
 		this.screen = screen;
-		int position = 700; // 275 antes		
+		int position = 275; // 275 antes		
 		this.character = charac;
 		this.height = random.nextInt((screen.getHeight()) + 1) + 300;
 		
@@ -54,15 +59,25 @@ public class Coins {
 
 	public void drawOnThe(Canvas canvas) {
 		for (Coin coin : coins) {
-			coin.drawOnThe(canvas);
+			
+			if(coin.xPos < screen.getWidth())
+				//canvas.drawCircle(coin.xPos-coin.RAIO, coin.height- coin.RAIO, coin.RAIO, Colors.getColorOfCharacter());
+			    coin.drawOnThe(canvas);
+			    //coin.coinAnim.drawOnThe(canvas,coin.xPos-coin.RAIO, (int) (coin.height- coin.RAIO), coin.RAIO,coin.RAIO);
+			//coin.drawOnThe(canvas);
 		}
 	}
 
+	public void tick(){
+		for(Coin coin: coins)
+			coin.coinAnim.tick();
+	}
 	public void move() {
 		ListIterator<Coin> iterator = coins.listIterator();
 		while(iterator.hasNext()){
 			Coin coin = iterator.next();
 			coin.move();
+			
 			//Log.d("Saindo", "\n\n\nVai sair a qualquer momento da tela\n\n\n");
 			if(coin.outOfBounds()){
 				/*score.aumenta();*/ // aumenta a pontuação quando o obstaculo sai da tela
@@ -73,7 +88,8 @@ public class Coins {
 				//iterator.add(auxCoin);
 			}else if (coin.hasCollisionWith(character)) {
 				iterator.remove();
-				
+				counter++;
+				Game.play(Sound.COIN_GET);
 			}
 			
 		}

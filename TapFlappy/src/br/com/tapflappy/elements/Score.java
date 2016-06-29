@@ -7,7 +7,7 @@ import android.graphics.Paint;
 public class Score {
 
 	private static final Paint BRANCO = Colors.getColorOfScore();
-	private int score = 0;
+	public int score = 0;
 	
 	public void drawOnThe(Canvas canvas) {
 		canvas.drawText(String.valueOf(score), 100, 100, BRANCO);

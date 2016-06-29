@@ -7,6 +7,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import br.com.tapflappy.engine.Game;
+import br.com.tapflappy.graphic.Animations;
 import br.com.tapflappy.graphic.Assets;
 import br.com.tapflappy.graphic.Colors;
 import br.com.tapflappy.graphic.Screen;
@@ -15,20 +16,20 @@ public class Coin  extends Element{
 
 
 	private Screen screen;
-	private int xPos;
+	public int xPos;
 	public static final int OBST_SIZE = 250;
-	static final int OBST_WIDTH = 100;
-	static final int RAIO = 25;
+	public static final int OBST_WIDTH = 100;
+	public static final int RAIO = 25;
 	private Random random;
 	//private static final Paint OBST_COLOR = Colors.getColorOfObstacle();
 	
-	private Bitmap obstacleInfImg;
-	private Bitmap obstacleSupImg;
+
 	private Context context;
 	private Bitmap bp[] = new Bitmap[3];
-	private float height;
+	public float height;
 
-
+	public Animations coinAnim;
+	
 	public Coin(Context context, Screen screen, int xPos, float height) {
 		this.screen = screen;
 		this.xPos = xPos;
@@ -36,6 +37,8 @@ public class Coin  extends Element{
 		this.random = new Random();
 		this.height = height;
 	
+		this.coinAnim = new Animations(1, Assets.bmpCoins, 10,44,40);
+		
 	
 		
 		 // Ou seja, o limite do obstaculo eh seu size...
@@ -56,8 +59,14 @@ public class Coin  extends Element{
 
 	private void drawCoin(Canvas canvas) {
 		
-		canvas.drawCircle(xPos, (float) height, RAIO, Colors.getColorOfCharacter());
-
+		//canvas.drawCircle(xPos, (float) height, RAIO, Colors.getColorOfCharacter());
+		canvas.drawBitmap(Bitmap.createScaledBitmap(coinAnim.getCurrentFrame(),
+							(int)RAIO*2,
+							(int)RAIO*2,
+							false), 
+							xPos-RAIO, 
+						  (float) (height- RAIO), 
+						  null);
 	}
 	
 	public void move() {

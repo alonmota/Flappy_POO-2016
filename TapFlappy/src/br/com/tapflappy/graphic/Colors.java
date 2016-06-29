@@ -37,5 +37,12 @@ public class Colors {
 		paintScore.setShadowLayer(3, 5, 5, 0xFF000000); // sombreia a pontuação
 		return paintScore;
 	}
-
+	public static Paint getColorBlack() {
+		Paint paintScore = new Paint();
+		paintScore.setColor(0x000000); // FFFFFF -> Branco
+		paintScore.setTextSize(80); // aumenta o tamanho do texto
+		paintScore.setTypeface(Typeface.DEFAULT_BOLD);
+		paintScore.setShadowLayer(3, 5, 5, 0xFF000000); // sombreia a pontuação
+		return paintScore;
+	}
 }

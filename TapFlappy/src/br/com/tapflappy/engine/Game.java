@@ -11,6 +11,7 @@ import android.view.MotionEvent;
 import android.view.View.OnTouchListener;
 import br.com.tapflappy.elements.Background;
 import br.com.tapflappy.elements.Character;
+import br.com.tapflappy.elements.Coin;
 import br.com.tapflappy.elements.Coins;
 import br.com.tapflappy.elements.GameOver;
 import br.com.tapflappy.elements.Item;
@@ -19,6 +20,7 @@ import br.com.tapflappy.elements.Obstacles;
 import br.com.tapflappy.elements.Score;
 import br.com.tapflappy.graphic.Animations;
 import br.com.tapflappy.graphic.Assets;
+import br.com.tapflappy.graphic.Colors;
 import br.com.tapflappy.graphic.Screen;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -33,7 +35,7 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 	// private Bitmap backgroundAux;
 	private Screen screen;
 	private Score score;
-	private Sound sound;
+	public static Sound sound;
 	// private Obstacle obstacle;
 	private Obstacles obstacles;
 	private GameOver gameover;
@@ -47,7 +49,7 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 	private int new_environment;
 	private static int current_environment;
 	
-	public Animations effect, coin;
+	public Animations effect;
 	
 	public boolean effectRunning;
 	public int effectXpos, effectYpos;
@@ -81,7 +83,7 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 		gameover = new GameOver();
 		
 		
-		coin = new Animations(50, Assets.bmpCoins, 10,44,40);
+		//coin = new Animations(50, Assets.bmpCoins, 10,44,40);
 		effect = new Animations(50, Assets.bmpExplosion, 6,73,119);
 		effectRunning = false;
 		// background
@@ -152,22 +154,24 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 
 			
 			//Coins Tests Animacao
-			coin.tick();
-			coin.drawOnThe(canvas, 400, 200, 50 ,50);
+			//coin.tick();
+			//coin.drawOnThe(canvas, 400, 200, 50 ,50);
 			
 			// Character actions
 			character.charAnim.tick();
 			character.drawOnThe(canvas);
+			//canvas.drawCircle(character.L_RECT, character.height, character.cRADIUS, Colors.getColorOfGameOver());
 			character.setNewPosition();
 
-			// Obstacle actions
-
-			/*
-			 * obstacle.drawOnThe(canvas); obstacle.move();
-			 */
+			// Coins actions
 			coins.drawOnThe(canvas);
 			coins.move();
+			for(Coin coin: coins.coins)
+				if(coin.xPos<screen.getWidth())
+					coin.coinAnim.tick();
+			//coins.tick();
 			
+			// Obstacle actions
 			obstacles.drawOnThe(canvas);
 			obstacles.move();
 			
@@ -196,17 +200,19 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 			
 			//canvas.drawRect(character.L_RECT , character.height, character.R_RECT , character.height + character.RADIUS, character.getCharColor());
 			
-			collisionResult = new CollisionChecker(character, item, obstacles).hasCollision();
+			collisionResult = new CollisionChecker(character, item, obstacles, coins).hasCollision();
 			//Log.d("Giz", "Tem tijolo de contrução "+collisionResult);
 			//Log.d("Eduardo", "e Monica "+current_environment);
 			if (collisionResult != 0) {
 				switch(collisionResult){
 				
 				case 1:
-					//sound.play(Sound.COLLIDE);
-					//sound.stop_music();
-					//gameover.drawOnThe(canvas, screen);
-					//isRunning = false;
+					
+					sound.play(Sound.COLLIDE);
+					sound.stop_music();
+					gameover.finalScoreCalculate(coins.counter, score.score);
+					gameover.drawOnThe(canvas, screen);
+					isRunning = false;
 					break;
 					
 				case 2:
@@ -225,7 +231,11 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 					sound.set_music(current_environment);
 					break;
 					
-					//case colisão coin: sound.play(Sound.COIN_GET);
+				case 3:
+					//Log.d("coin", "coin collision");
+					//sound.play(Sound.COIN_GET);
+					break;
+					
 				}
 			}
 
@@ -259,6 +269,10 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 
 	public void setCurrent_environment(int current_environment) {
 		this.current_environment = current_environment;
+	}
+
+	public static void play(int n) {
+		sound.play(sound.COIN_GET);
 	}
 
 }

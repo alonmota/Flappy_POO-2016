@@ -95,7 +95,7 @@ public class Item extends Element{
 					&& this.hasVerticalCollisionWith(character)){
 				
 
-				xPos += 1500;
+				xPos += 2500;
 				return true;
 			}
 		
