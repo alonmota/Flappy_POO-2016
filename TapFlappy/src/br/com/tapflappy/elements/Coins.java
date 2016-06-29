@@ -10,8 +10,8 @@ import android.graphics.Canvas;
 import br.com.tapflappy.graphic.Screen;
 
 public class Coins {
-	private static final int NUM_OF_COINS = 5;
-	private static final int COINS_DIST = 600 ;
+	private static final int NUM_OF_COINS = 50;
+	private static final int COINS_DIST = 700 ;
 	private Character character;
 	
 	private final List<Coin> coins = new ArrayList<Coin>();
@@ -24,9 +24,9 @@ public class Coins {
 
 	public Coins(Context context, Screen screen, Score score, Character charac) {
 		this.screen = screen;
-		int position = 750; // 275 antes		
+		int position = 700; // 275 antes		
 		this.character = charac;
-		this.height = random.nextInt((screen.getHeight()-25 + 25) + 1) + 25;
+		this.height = random.nextInt((screen.getHeight()) + 1) + 300;
 		
 		for (int i = 0; i < NUM_OF_COINS; i++) {
 			position += COINS_DIST;
@@ -71,6 +71,9 @@ public class Coins {
 				//Log.d("Saiu", "\n\n\nSaiu da tela\n\n\n");
 				//Coin auxCoin = new Coin(context, screen, getMaxPos() + COINS_DIST);
 				//iterator.add(auxCoin);
+			}else if (coin.hasCollisionWith(character)) {
+				iterator.remove();
+				
 			}
 			
 		}
