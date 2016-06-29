@@ -167,12 +167,13 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 			/*
 			 * obstacle.drawOnThe(canvas); obstacle.move();
 			 */
+			coins.drawOnThe(canvas);
+			coins.move();
 			
 			obstacles.drawOnThe(canvas);
 			obstacles.move();
 			
-			coins.drawOnThe(canvas);
-			coins.move();
+			
 			
 			
 			//Effect Actions

@@ -66,7 +66,7 @@ public class Coin  extends Element{
 
 	public boolean outOfBounds() {
 		
-		return (xPos + 300 + RAIO) < 0; /* lateral direita do obstaculo 
+		return (xPos + RAIO) < 0; /* lateral direita do obstaculo 
 											sai da tela (passa da menor posicao possivel,
 											 que eh o 0) = obstaculo invisivel
 		 								*/
@@ -76,6 +76,10 @@ public class Coin  extends Element{
 	public int getPosition() {
 		return xPos;
 	}
+	public float getHeight() {
+		return height;
+	}
+	
 
 	public boolean hasHorizontalCollisionWith(Character character) {
 		
@@ -85,17 +89,16 @@ public class Coin  extends Element{
 		 															*/
 	}
 
-	public boolean hasVerticalCollisionWith(Character character) {
-		
-		return character.height < this.xPos+RAIO || character.height < this.xPos-RAIO;
-	}
 
 	@Override
 	public boolean hasCollisionWith(Character character) {
-		if(this.hasHorizontalCollisionWith(character) 
-				&& this.hasVerticalCollisionWith(character)){
-			return true;
-		}
+		return character.RADIUS + character.L_RECT > this.xPos-RAIO && character.height  > this.height-RAIO 
+		&& character.height < this.height+RAIO;
+	}
+
+	@Override
+	public boolean hasVerticalCollisionWith(Character character) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
