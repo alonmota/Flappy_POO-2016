@@ -158,9 +158,7 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 			// Character actions
 			character.charAnim.tick();
 			character.drawOnThe(canvas);
-			if(character.base < screen.getHeight()){
-				character.drop();
-			}
+			character.setNewPosition();
 
 			// Obstacle actions
 
@@ -249,17 +247,10 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 	@Override
 	public boolean onTouch(View v, MotionEvent event) {
 		
-		for(int i=0;i<5; i++){
-			collisionResult = new CollisionChecker(character, item, obstacles).hasCollision();
-		
-			if(collisionResult == 1){
-				return false;
-			}
-				
-			character.jump();
-		}
+			character.resetPosition(character.height);
+			sound.play(sound.JUMP);
+			
 		return false;
-
 	}
 
 	public static int getCurrent_environment() {

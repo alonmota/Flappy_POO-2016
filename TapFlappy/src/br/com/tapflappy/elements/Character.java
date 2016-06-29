@@ -36,6 +36,8 @@ public class Character {
 	private Bitmap characterFrames[] = new Bitmap[10];
 	private Obstacle obstacle;
 
+	public float yOffset, pico = 100f, picoTime= 0.35f, coefA, coefB;
+	
 	public Animations charAnim;
 
 	private static final Paint CHAR_COLOR = Colors.getColorOfCharacter();
@@ -49,7 +51,7 @@ public class Character {
 		this.base = 200;
 		this.height = 100;
 		this.charAnim = new Animations(1,Assets.bmpChar);
-		
+		estimateValues(pico, picoTime);
 //		characterFrames[0] = Bitmap.createScaledBitmap(Assets.bmpChar[0],(int)RADIUS*2,(int)RADIUS*2,false);
 //		characterFrames[1] = Bitmap.createScaledBitmap(Assets.bmpChar[1],(int)RADIUS*2,(int)RADIUS*2,false);
 //		characterFrames[2] = Bitmap.createScaledBitmap(Assets.bmpChar[2],(int)RADIUS*2,(int)RADIUS*2,false);
@@ -78,73 +80,78 @@ public class Character {
 						  (float) (height-RADIUS), 
 						  null);
 	}
-
-	public void drop() {
-
-		boolean floor = base > screen.getHeight();
-
-		/*
-		 * if(!floor) { this.height += 5; this.base += 5; }
-		 */
+	
+	public void estimateValues(float pico, float picoTime){
+		
+		this.coefA = (-pico)/(picoTime*picoTime);
+		
+		this.coefB = pico-( picoTime*picoTime*this.coefA   );
+		this.coefB=this.coefB/picoTime;
+		
+	}
+	
+public void setNewPosition(){
+		
+		float newHeight;
+		Log.d("Yes", "Coefa, coefb: "+coefA+"  "+coefB);
 		if (time_anterior == 0) {
+			
 			time_atual = SystemClock.uptimeMillis() * 0.001f;
 			time_anterior = SystemClock.uptimeMillis() * 0.001f;
 
 			time = time_atual;
 
-			velocidade_inicial = 0;
+			//velocidade_inicial = 0;
 
 		} else {
 
 			time_atual = SystemClock.uptimeMillis() * 0.001f;
-
+			
 			time = time_atual - time_anterior;
 
-			height = (float) (height + (velocidade_inicial * time) + ((1 * gravity * time * time) / 2));
-			base = (float) (height + 50);
+					//height = (float) (height + (velocidade_inicial * time) + ((1 * gravity * time * time) / 2));
+					//base = (float) (height + 50);
+					
+					newHeight = (float) (-1*(((coefA) * time * time) + (coefB * time) + (screen.getHeight() - yOffset) - screen.getHeight()));
+					
+					if(newHeight>= -200 && newHeight<screen.getHeight())
+						height = newHeight;
+					else if(newHeight < -200 ){
+						
+					    resetPosition(pico-200);
+					    
+						time_atual+=picoTime;
+						
+					    /*float auxTime= 100/(coefA+coefB);
+					    newHeight = (float) (-1*(((coefA) * auxTime * auxTime) + (coefB * auxTime)  - screen.getHeight()));
+					    height = newHeight;
+					    time_atual = SystemClock.uptimeMillis() * 0.001f;
+						time_anterior = SystemClock.uptimeMillis() * 0.001f;
+
+						time = time_atual;
+						
+						*/
+					}else if(newHeight>screen.getHeight())
+						height = screen.getHeight()-10;
+					
+					base = (float) (height + 50);
+					//velocidade_inicial += (3 * gravity * time);
 			
-			//Log.d("dq", "height -   " + height);
-			//Log.d("dq", "Current -Anterioir: "+(time_atual - time_anterior));
+					//time_anterior = time_atual;
 			
-			
-			velocidade_inicial += (3 * gravity * time);
-
-			time_anterior = time_atual;
-
-		}
-
-	}
-
-	public void jump() {
-		
-		/*if (new CollisionChecker(character, obstacles).hasCollision()) {
-			sound.play(Sound.COLLIDE);
-			gameover.drawOnThe(canvas, screen);
-			isRunning = false;
-			continue; 
-			/** TODO Pensar a respeito dessa colisao 
-		} */
-		
-		// if (height > 0) {
-
-		for (int i = 0; i < 5; i++) {
-
-			try {
-				Thread.sleep(1);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			height -= 3;
-			base -= 35;
+					
 			
 		}
-
-		velocidade_inicial = 0;
-		sound.play(Sound.JUMP);
-		// PULO é static, portanto acessado através diretamente da classe
 	}
+
+	public void resetPosition(float yOffset){
+	
+	time_anterior = time_atual;
+	this.yOffset = yOffset;
+	
+	sound.play(Sound.JUMP);
+	}
+
 
 	public static Paint getCharColor() {
 		return CHAR_COLOR;
