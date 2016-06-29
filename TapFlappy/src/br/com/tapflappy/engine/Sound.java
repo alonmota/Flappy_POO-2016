@@ -19,6 +19,7 @@ public class Sound{
 		ENDGAME 		= pool.load(context, R.raw.sfx_endgame, 	1);
 		NEWGAME 		= pool.load(context, R.raw.sfx_newgame, 	1);
 		BUTTONPRESS 	= pool.load(context, R.raw.sfx_buttonpress, 1);
+		COIN_GET		= pool.load(context, R.raw.sfx_coin_get,	1);
 		
 		/*	Catálogo de Sound Assets:
 		 * 
@@ -44,7 +45,7 @@ public class Sound{
 		music[1] = MediaPlayer.create(context, R.raw.music_city);
 		music[1].setLooping(true);
 		
-		music[2] = MediaPlayer.create(context, R.raw.music_city);
+		music[2] = MediaPlayer.create(context, R.raw.music_desert);
 		music[2].setLooping(true);
 	}
 	
@@ -61,6 +62,7 @@ public class Sound{
 	public static int NEWGAME;
 	public static int BUTTONPRESS;
 	public static int MUSIC_FOREST;
+	public static int COIN_GET;
 	
 	//Public Methods
 	public void play(int sound_id){

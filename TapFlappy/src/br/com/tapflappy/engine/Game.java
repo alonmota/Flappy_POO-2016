@@ -225,6 +225,8 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 					
 					sound.set_music(current_environment);
 					break;
+					
+					//case colisão coin: sound.play(Sound.COIN_GET);
 				}
 			}
 

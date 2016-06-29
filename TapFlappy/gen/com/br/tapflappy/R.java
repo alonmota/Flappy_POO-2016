@@ -44,31 +44,34 @@ public final class R {
         public static final int effect1=0x7f02001e;
         public static final int effect2=0x7f02001f;
         public static final int effect3=0x7f020020;
-        public static final int explosion=0x7f020021;
-        public static final int f=0x7f020022;
-        public static final int fase_1_background=0x7f020023;
-        public static final int fase_2_background=0x7f020024;
-        public static final int florestaa=0x7f020025;
-        public static final int florestab=0x7f020026;
-        public static final int g=0x7f020027;
-        public static final int gema1=0x7f020028;
-        public static final int gema2=0x7f020029;
-        public static final int gema3=0x7f02002a;
-        public static final int h=0x7f02002b;
-        public static final int i=0x7f02002c;
-        public static final int ic_launcher=0x7f02002d;
-        public static final int item=0x7f02002e;
-        public static final int j=0x7f02002f;
-        public static final int menu_background=0x7f020030;
-        public static final int passaro=0x7f020031;
-        public static final int pause_icon=0x7f020032;
-        public static final int play_down=0x7f020033;
-        public static final int play_up=0x7f020034;
-        public static final int quit_down=0x7f020035;
-        public static final int quit_up=0x7f020036;
-        public static final int settings_down=0x7f020037;
-        public static final int settings_up=0x7f020038;
-        public static final int tree=0x7f020039;
+        public static final int effectpurple=0x7f020021;
+        public static final int explosion=0x7f020022;
+        public static final int f=0x7f020023;
+        public static final int fase_1_background=0x7f020024;
+        public static final int fase_2_background=0x7f020025;
+        public static final int florestaa=0x7f020026;
+        public static final int florestab=0x7f020027;
+        public static final int g=0x7f020028;
+        public static final int gema1=0x7f020029;
+        public static final int gema2=0x7f02002a;
+        public static final int gema3=0x7f02002b;
+        public static final int gfxgreen=0x7f02002c;
+        public static final int gfxpurple=0x7f02002d;
+        public static final int h=0x7f02002e;
+        public static final int i=0x7f02002f;
+        public static final int ic_launcher=0x7f020030;
+        public static final int item=0x7f020031;
+        public static final int j=0x7f020032;
+        public static final int menu_background=0x7f020033;
+        public static final int passaro=0x7f020034;
+        public static final int pause_icon=0x7f020035;
+        public static final int play_down=0x7f020036;
+        public static final int play_up=0x7f020037;
+        public static final int quit_down=0x7f020038;
+        public static final int quit_up=0x7f020039;
+        public static final int settings_down=0x7f02003a;
+        public static final int settings_up=0x7f02003b;
+        public static final int tree=0x7f02003c;
     }
     public static final class id {
         public static final int PLAY=0x7f070001;
@@ -81,14 +84,15 @@ public final class R {
     }
     public static final class raw {
         public static final int music_city=0x7f040000;
-        public static final int music_forest=0x7f040001;
-        public static final int music_game=0x7f040002;
+        public static final int music_desert=0x7f040001;
+        public static final int music_forest=0x7f040002;
         public static final int sfx_buttonpress=0x7f040003;
-        public static final int sfx_endgame=0x7f040004;
-        public static final int sfx_explosion=0x7f040005;
-        public static final int sfx_item_get=0x7f040006;
-        public static final int sfx_jump=0x7f040007;
-        public static final int sfx_newgame=0x7f040008;
+        public static final int sfx_coin_get=0x7f040004;
+        public static final int sfx_endgame=0x7f040005;
+        public static final int sfx_explosion=0x7f040006;
+        public static final int sfx_item_get=0x7f040007;
+        public static final int sfx_jump=0x7f040008;
+        public static final int sfx_newgame=0x7f040009;
     }
     public static final class string {
         public static final int app_name=0x7f050000;
