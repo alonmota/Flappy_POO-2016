@@ -18,7 +18,8 @@ public class Coin  extends Element{
 	private int xPos;
 	public static final int OBST_SIZE = 250;
 	static final int OBST_WIDTH = 100;
-	private int random;
+	static final int RAIO = 25;
+	private Random random;
 	//private static final Paint OBST_COLOR = Colors.getColorOfObstacle();
 	
 	private Bitmap obstacleInfImg;
@@ -27,13 +28,15 @@ public class Coin  extends Element{
 	private Bitmap bp[] = new Bitmap[3];
 	private float height;
 
-	public Coin(Context context, Screen screen, int xPos) {
+
+	public Coin(Context context, Screen screen, int xPos, float height) {
 		this.screen = screen;
 		this.xPos = xPos;
 		this.context = context;
+		this.random = new Random();
+		this.height = height;
 	
-		
-		this.random = randomValue();
+	
 		
 		 // Ou seja, o limite do obstaculo eh seu size...
 		 // 0 -> topo da tela. OBS: o ponto (0,0) fica no canto superior esquerdo da tela
@@ -53,10 +56,8 @@ public class Coin  extends Element{
 
 	private void drawCoin(Canvas canvas) {
 		
-		height = 100;
+		canvas.drawCircle(xPos, (float) height, RAIO, Colors.getColorOfCharacter());
 
-
-		canvas.drawCircle(xPos, (float) height, 50, Colors.getColorOfCharacter());
 	}
 	
 	public void move() {
@@ -65,7 +66,7 @@ public class Coin  extends Element{
 
 	public boolean outOfBounds() {
 		
-		return (xPos + 50) < 0; /* lateral direita do obstaculo 
+		return (xPos + 300 + RAIO) < 0; /* lateral direita do obstaculo 
 											sai da tela (passa da menor posicao possivel,
 											 que eh o 0) = obstaculo invisivel
 		 								*/
@@ -86,7 +87,7 @@ public class Coin  extends Element{
 
 	public boolean hasVerticalCollisionWith(Character character) {
 		
-		return character.height < this.xPos+50 || character.height < this.xPos-50;
+		return character.height < this.xPos+RAIO || character.height < this.xPos-RAIO;
 	}
 
 	@Override
