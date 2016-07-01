@@ -62,7 +62,7 @@ public class Obstacles {
 		}
 	}
 
-	private int getMaxPos() {
+	public int getMaxPos() {
 		int max = 0;
 		for (Obstacle obstacle : obstacles) {
 			max = Math.max(obstacle.getPosition(), max);

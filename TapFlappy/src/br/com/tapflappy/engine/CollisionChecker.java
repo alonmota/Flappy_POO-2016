@@ -10,13 +10,14 @@ public class CollisionChecker {
 
 	private Character character;
 	private Obstacles obstacles;
-	private Coins coins;
+	private Coins coins1, coins2;
 	private Item item;
 
-	public CollisionChecker(Character character, Element item, Obstacles obstacles, Coins coins) {
+	public CollisionChecker(Character character, Element item, Obstacles obstacles, Coins coins1, Coins coins2) {
 		this.character = character;
 		this.obstacles = obstacles;
-		this.coins = coins;
+		this.coins1 = coins1;
+		this.coins2 = coins2;
 		this.item = (Item) item;
 	}
 
@@ -26,7 +27,7 @@ public class CollisionChecker {
 			return 1;
 		else if(item.hasCollisionWith(character))
 			return 2;
-		else if(coins.hasCollisionWith(character))
+		else if(coins1.hasCollisionWith(character)|| coins2.hasCollisionWith(character))
 			return 3;
 		else
 			return 0;

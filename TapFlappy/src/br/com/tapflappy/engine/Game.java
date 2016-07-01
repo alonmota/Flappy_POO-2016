@@ -53,7 +53,7 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 	
 	public boolean effectRunning;
 	public int effectXpos, effectYpos;
-	private Coins coins;
+	private Coins coins1, coins2;
 	
 	
 	public Game(Context context) {
@@ -98,7 +98,8 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 				
 		// obstacle = new Obstacle(screen, 275);
 		obstacles = new Obstacles(context,screen, score, character);
-		coins = new Coins(context, screen, score, character);
+		coins1 = new Coins(context, screen, score, character , 730, obstacles);
+		coins2 = new Coins(context, screen, score, character , 30, obstacles);
 				
 		//alternador = 1;
 		//variante1 = 0;
@@ -164,9 +165,20 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 			character.setNewPosition();
 
 			// Coins actions
-			coins.drawOnThe(canvas);
-			coins.move();
-			for(Coin coin: coins.coins)
+			coins1.update();
+			coins2.update();
+			
+			coins1.drawOnThe(canvas);
+			coins2.drawOnThe(canvas);
+			
+			coins1.move();
+			coins2.move();
+			
+			for(Coin coin: coins1.coins)
+				if(coin.xPos<screen.getWidth())
+					coin.coinAnim.tick();
+			
+			for(Coin coin: coins2.coins)
 				if(coin.xPos<screen.getWidth())
 					coin.coinAnim.tick();
 			//coins.tick();
@@ -200,7 +212,7 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 			
 			//canvas.drawRect(character.L_RECT , character.height, character.R_RECT , character.height + character.RADIUS, character.getCharColor());
 			
-			collisionResult = new CollisionChecker(character, item, obstacles, coins).hasCollision();
+			collisionResult = new CollisionChecker(character, item, obstacles, coins1, coins2).hasCollision();
 			//Log.d("Giz", "Tem tijolo de contrução "+collisionResult);
 			//Log.d("Eduardo", "e Monica "+current_environment);
 			if (collisionResult != 0) {
@@ -210,7 +222,8 @@ public class Game extends SurfaceView implements Runnable, OnTouchListener {
 					
 					sound.play(Sound.COLLIDE);
 					sound.stop_music();
-					gameover.finalScoreCalculate(coins.counter, score.score);
+					coins1.counter+=coins2.counter;
+					gameover.finalScoreCalculate(coins1.counter, score.score);
 					gameover.drawOnThe(canvas, screen);
 					isRunning = false;
 					break;
